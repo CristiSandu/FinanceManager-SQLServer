@@ -1,6 +1,6 @@
 # 💰 Finance Manager
 
-![](/Images/Picture9.png)
+![](/Finance-Manager/Images/Picture9.png)
 
 ## 📌 Introduction
 
@@ -90,8 +90,8 @@ We will go through many steps. From the most introductory to the most complex an
     - Xamarin.Essentials: **Version Tracking**
 13. App Icon and Splash Screen
 
-![](/Images/layouts.png)
-![](/Images/Picture5.png)
+![](/Finance-Manager/Images/layouts.png)
+![](/Finance-Manager/Images/Picture5.png)
 
 ## 📖 Bibliography
 
