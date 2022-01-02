@@ -60,6 +60,9 @@
     <PackageReference Include="MongoDB.Driver">
       <Version>2.4.4</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Resizetizer.NT">
       <Version>0.3.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

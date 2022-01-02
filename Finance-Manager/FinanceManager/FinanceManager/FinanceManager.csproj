@@ -32,6 +32,7 @@
   <ItemGroup>
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="MongoDB.Driver" Version="2.4.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Resizetizer.NT" Version="0.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -43,9 +43,7 @@ namespace FinanceManager.Services
 
         public async static Task<List<Transaction>> GetAllItems()
         {
-            var allItems = await ToDoItemsCollection.Aggregate().Lookup(
-                foreignCollection  
-                )
+            var allItems = await ToDoItemsCollection.Aggregate().ToListAsync();
             return allItems;
         }
 

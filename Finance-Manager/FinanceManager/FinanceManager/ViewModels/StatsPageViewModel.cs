@@ -163,6 +163,7 @@ namespace FinanceManager.ViewModels
             OnPropertyChanged(nameof(GrafData));
         }
 
+
         public StatsPageViewModel()
         {
             Task.Run(async () =>
@@ -180,8 +181,12 @@ namespace FinanceManager.ViewModels
                 //    BalanceColor = Color.Green;
                 //}
 
-                //TotalMessage = "Balance: ";
+                await Services.DatabaseConnection.AddAccount();
+                List<ApiControllers.Account> getAccount = (List<ApiControllers.Account>)await Services.DatabaseConnection._connection.AccountAllAsync();
+
+                TotalMessage = "Balance: ";
             }).Wait();
+
 
             NextMonth = new Command(async =>
             {

@@ -11,6 +11,7 @@ namespace FinanceManager
         public App()
         {
             InitializeComponent();
+            DependencyService.Register<ApiControllers.ApiCommunication>();
 
             Settings.SetTheme();
             VersionTracking.Track();

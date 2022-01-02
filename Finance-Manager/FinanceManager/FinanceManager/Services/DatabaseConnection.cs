@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApiControllers;
 using FinanceManager.Models;
 using SQLite;
 using Xamarin.Essentials;
@@ -12,6 +13,7 @@ namespace FinanceManager.Services
 {
     public static class DatabaseConnection
     {
+        public static ApiCommunication _connection;
         static SQLiteAsyncConnection db;
         static async Task Init()
         {
@@ -24,8 +26,11 @@ namespace FinanceManager.Services
             db = new SQLiteAsyncConnection(databasePath);
 
             await db.CreateTableAsync<Transaction>();
-            await db.CreateTableAsync<Account>();
+            await db.CreateTableAsync<Models.Account>();
+
         }
+
+
 
         public static async Task AddTransaction(Transaction transaction)
         {
@@ -33,23 +38,23 @@ namespace FinanceManager.Services
             await db.InsertAsync(transaction);
         }
 
-        public static async Task AddAccount(Account account)
+        public static async Task AddAccount()
         {
-            await Init();
-            await db.InsertAsync(account);
+            _connection = new ApiCommunication("https://financemanagerapi20220102223217.azurewebsites.net/", new System.Net.Http.HttpClient());
+
         }
 
-        public static async Task UpdateAccount(Account acc)
+        public static async Task UpdateAccount(Models.Account acc)
         {
             await Init();
             await db.UpdateAsync(acc);
         }
 
-        public static async Task<List<Account>> GetAccountByName(string name)
+        public static async Task<List<Models.Account>> GetAccountByName(string name)
         {
             await Init();
             string query = $"SELECT * FROM \"Account\" WHERE Name = \"{name}\"";
-            var trans = await db.QueryAsync<Account>(query);
+            var trans = await db.QueryAsync<Models.Account>(query);
 
             return trans;
         }
@@ -57,7 +62,7 @@ namespace FinanceManager.Services
         public static async Task<bool> VerifyIfAccExist(string name)
         {
             await Init();
-            List<Account> trans = await GetAccountByName(name);
+            List<Models.Account> trans = await GetAccountByName(name);
             
             return trans.Count == 0 ? true : false;
         }
@@ -68,10 +73,10 @@ namespace FinanceManager.Services
             return await db.Table<Transaction>().ToListAsync();
         }
 
-        public static async Task<List<Account>> GetAccounts()
+        public static async Task<List<Models.Account>> GetAccounts()
         {
             await Init();
-            return await db.Table<Account>().ToListAsync();
+            return await db.Table<Models.Account>().ToListAsync();
         }
 
         public static async Task<IEnumerable<Transaction>> GetIncomeTransactions()
@@ -99,11 +104,11 @@ namespace FinanceManager.Services
             return incomeSum;
         }
 
-        public static async Task<List<Account>> GetAccountsWithBalance()
+        public static async Task<List<Models.Account>> GetAccountsWithBalance()
         {
             await Init();
             string query = "SELECT IFNULL(a.ACC ,b.ACC) as Name , (IFNULL(a.Balance,0) - IFNULL(b.Balance,0)) as Balance FROM (SELECT Account as ACC ,SUM(Price) as Balance FROM \"Transaction\"  WHERE Type = \"Income\" GROUP BY Account) a,(SELECT Account as ACC ,SUM(Price) as Balance FROM \"Transaction\" WHERE Type = \"Expense\" GROUP BY Account) b GROUP BY Name";
-            var trans = await db.QueryAsync<Account>(query);
+            var trans = await db.QueryAsync<Models.Account>(query);
 
             return trans;
         }
