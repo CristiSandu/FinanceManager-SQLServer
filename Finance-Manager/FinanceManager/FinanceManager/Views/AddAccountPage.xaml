@@ -4,24 +4,144 @@
              x:Class="FinanceManager.Views.AddAccountPage"
              Title="Add Initial Accounts">
     <ContentPage.Content>
-        <StackLayout  VerticalOptions="Center" Padding="16" Spacing="24">
-            <Frame Style="{StaticResource FrameAddNews}">
-                <Entry x:Name="accountName" 
-                       Placeholder="Account" 
-                       VerticalOptions="Center" 
-                       Text="{Binding Name}"/>
-            </Frame>
-            <Frame Style="{StaticResource FrameAddNews}">
-                <Entry x:Name="accountBalance" 
-                       Placeholder="Initial Amounth"
-                       VerticalOptions="Center" 
-                       Keyboard="Numeric" 
-                       Text="{Binding InitialBalance}"/>
-            </Frame>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="16">
-                <Button Text="Add New Account" Style="{StaticResource MainButtonUnChecked}" Clicked="Button_Clicked"/>
-                <Button Text="Next" Style="{StaticResource MainButtonChecked}" Clicked="Button_Clicked_1"/>
-            </StackLayout>
-        </StackLayout>
+        <Grid  VerticalOptions="Center" Padding="16,4,16,0" RowSpacing="8">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <CollectionView Grid.Row="0"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding Accounts}"
+                            SelectionChangedCommand="{Binding UpdateCommand}"
+                            SelectedItem = "{Binding SelectedAccount}">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource TransactionListStyle}" Padding="5,5,2,5">
+                            <Grid Padding="10,10,10,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding AccountName}"
+                                       Grid.Row="0"
+                                       
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                       Style="{StaticResource TitleStyle}"/>
+
+                                <Label Grid.Row="1"
+                                       HorizontalOptions="Start"
+                                       Text="{Binding Path=AccountBalance,StringFormat='{0:F2} Lei'}"
+                                       TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       Style="{StaticResource TitleStyle}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.Footer>
+                    <ContentView>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="Red"  Padding="4" Spacing="0">
+                            <Label Text="Add a New Account" VerticalOptions="Center"/>
+                            <Button Text="chevron-down" FontFamily="FAS" TextTransform="None"
+                                        Command="{Binding ShowAddAccount}" HeightRequest="30" BackgroundColor="Transparent" BorderColor="Transparent" Padding="0"
+                                        Style="{StaticResource MainButtonChecked}" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.Footer>
+            </CollectionView>
+
+            <Grid Grid.Row="1" IsVisible="{Binding IsShowAddAccount}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Row="0" Style="{StaticResource FrameAddNews}">
+                    <Entry  Placeholder="Account Name" 
+                            VerticalOptions="Center" 
+                            Text="{Binding AccountData.AccountName}"/>
+                </Frame>
+                <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource FrameAddNews}">
+                    <Entry  Placeholder="Initial Amounth"
+                            VerticalOptions="Center" 
+                            Keyboard="Numeric" 
+                            Text="{Binding AccountData.AccountBalance}"/>
+                </Frame>
+
+                <Frame Grid.Row="1"   Style="{StaticResource FrameAddNews}">
+                    <Picker ItemsSource="{Binding BanksList}"
+                            Title="Select a Bank"
+                            ItemDisplayBinding="{Binding BankName}"
+                            SelectedItem="{Binding SelectedBank}"/>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource FrameAddNews}">
+                    <Picker ItemsSource="{Binding TypesList}"
+                            Title="Select a Type"
+                            ItemDisplayBinding="{Binding TypesName}"
+                            SelectedItem="{Binding SelectedType}"/>
+                </Frame>
+
+                <Frame Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource FrameAddNews}">
+                    <Entry Placeholder="IBAN: ex RO09BCYP0000001234567890"
+                           VerticalOptions="Center" 
+                           TextTransform="Uppercase"
+                           Text="{Binding AccountData.AccountIban}" >
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                </Frame>
+
+                <Frame Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource FrameAddNews}">
+                    <Entry Placeholder="Holder"
+                           VerticalOptions="Center" 
+                           TextTransform="Uppercase"
+                           Text="{Binding AccountData.AccountHolder}">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+
+                </Frame>
+
+                <StackLayout  Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="8" Padding="0,16,16,16">
+                    <Button Text="Add New Account" Style="{StaticResource MainButtonUnChecked}" Command="{Binding AddNewAccount}"/>
+                    <Button Text="Next" Style="{StaticResource MainButtonChecked}" Clicked="Button_Clicked_1"/>
+                    <Button Text="Delete" Style="{StaticResource MainButtonUnChecked}" Command="{Binding DeleteAccoutCommand}"/>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

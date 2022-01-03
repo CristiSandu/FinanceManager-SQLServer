@@ -11,17 +11,13 @@ namespace FinanceManager
         public App()
         {
             InitializeComponent();
-            DependencyService.Register<ApiControllers.ApiCommunication>();
 
             Settings.SetTheme();
             VersionTracking.Track();
 
             var firstLaunch = VersionTracking.IsFirstLaunchEver;
 
-            if (firstLaunch)
-                MainPage = new NavigationPage(new Views.WelcomePage());
-            else
-                MainPage = new NavigationPage(new Views.MainTabbedPage());
+            MainPage = true ? new NavigationPage(new Views.AccountsPage()) : new NavigationPage(new Views.MainTabbedPage());
         }
 
         protected override void OnStart()

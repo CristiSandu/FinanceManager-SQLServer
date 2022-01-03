@@ -182,7 +182,6 @@ namespace FinanceManager.ViewModels
                 //}
 
                 await Services.DatabaseConnection.AddAccount();
-                List<ApiControllers.Account> getAccount = (List<ApiControllers.Account>)await Services.DatabaseConnection._connection.AccountAllAsync();
 
                 TotalMessage = "Balance: ";
             }).Wait();

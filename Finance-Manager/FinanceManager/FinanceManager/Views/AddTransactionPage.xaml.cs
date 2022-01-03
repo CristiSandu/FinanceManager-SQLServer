@@ -69,14 +69,7 @@ namespace FinanceManager.Views
 
            
 
-            if (SelectedTypes == "Income")
-            {
-                SelectedAccount.Balance += (float)Price;
-            }
-            else
-            {
-                SelectedAccount.Balance -= (float)Price;
-            }
+          
 
 
             await Navigation.PopAsync();

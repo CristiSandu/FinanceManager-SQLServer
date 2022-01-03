@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ApiControllers;
 using FinanceManager.Models;
 using SQLite;
 using Xamarin.Essentials;
@@ -13,7 +12,6 @@ namespace FinanceManager.Services
 {
     public static class DatabaseConnection
     {
-        public static ApiCommunication _connection;
         static SQLiteAsyncConnection db;
         static async Task Init()
         {
@@ -40,8 +38,14 @@ namespace FinanceManager.Services
 
         public static async Task AddAccount()
         {
-            _connection = new ApiCommunication("https://financemanagerapi20220102223217.azurewebsites.net/", new System.Net.Http.HttpClient());
+            var list_of = await Services.APIConnection.GetCollection<Account>("/api/Account");
+            
+            var list_of_bank = await Services.APIConnection.GetCollectionElement<Bank>("/api/Bank", 1);
+            var list_of_cat = await Services.APIConnection.GetCollection<Categorie>("/api/Categorie");
+            var list_of_type = await Services.APIConnection.GetCollection<Models.Type>("/api/Type");
 
+
+            int i = 0;
         }
 
         public static async Task UpdateAccount(Models.Account acc)
@@ -63,7 +67,7 @@ namespace FinanceManager.Services
         {
             await Init();
             List<Models.Account> trans = await GetAccountByName(name);
-            
+
             return trans.Count == 0 ? true : false;
         }
 
