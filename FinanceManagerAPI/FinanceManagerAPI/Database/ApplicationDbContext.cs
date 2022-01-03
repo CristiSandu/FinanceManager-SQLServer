@@ -37,8 +37,6 @@ namespace FinanceManagerAPI.Database
         {
             modelBuilder.Entity<Account>(entity =>
             {
-                entity.Property(e => e.AccountId).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Bank)
                     .WithMany(p => p.Accounts)
                     .HasForeignKey(d => d.BankId)
@@ -50,20 +48,8 @@ namespace FinanceManagerAPI.Database
                     .HasConstraintName("types_id_fk");
             });
 
-            modelBuilder.Entity<Bank>(entity =>
-            {
-                entity.Property(e => e.BankId).ValueGeneratedNever();
-            });
-
-            modelBuilder.Entity<Category>(entity =>
-            {
-                entity.Property(e => e.CategoryId).ValueGeneratedNever();
-            });
-
             modelBuilder.Entity<Merchant>(entity =>
             {
-                entity.Property(e => e.MerchantId).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Merchants)
                     .HasForeignKey(d => d.CategoryId)
@@ -74,8 +60,6 @@ namespace FinanceManagerAPI.Database
             {
                 entity.HasKey(e => e.StatsId)
                     .HasName("stats_id_pk");
-
-                entity.Property(e => e.StatsId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Stats)
@@ -92,8 +76,6 @@ namespace FinanceManagerAPI.Database
             {
                 entity.HasKey(e => e.TransactionId)
                     .HasName("transaction_id_pk");
-
-                entity.Property(e => e.TransactionId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.TransactionAccs)
@@ -120,8 +102,6 @@ namespace FinanceManagerAPI.Database
             {
                 entity.HasKey(e => e.TypesId)
                     .HasName("types_id_pk");
-
-                entity.Property(e => e.TypesId).ValueGeneratedNever();
             });
 
             OnModelCreatingPartial(modelBuilder);
