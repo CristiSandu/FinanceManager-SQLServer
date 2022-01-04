@@ -9,6 +9,10 @@
             <Color x:Key="AccentDarkGreen">#70A0AF</Color>
             <Color x:Key="AccentLitePurple">#706993</Color>
             <Color x:Key="AccentDarkPurple">#331E38</Color>
+            <Color x:Key="WhitePurple">#d4d2df</Color>
+
+
+            
 
             <Color x:Key="ChartColor1">#FF0000</Color>
             <Color x:Key="ChartColor2">#FF8700</Color>

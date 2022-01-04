@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanceManager.Views.AccountViews.TransactionsPage">
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <BoxView BackgroundColor="{StaticResource AccentLitePurple}"/>
+            <StackLayout  Grid.RowSpan="4" Padding="16,0,16,0" Spacing="0" >
+                <CollectionView x:Name="accountsList"
+                            Grid.RowSpan="4"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding AccountsList}"
+                            >
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="11" VerticalItemSpacing="11"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
+                                <Grid Padding="0,0,0,0" RowSpacing="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Grid.Column="0" Grid.RowSpan="2" 
+                                            Text="undo" Padding="0" FontFamily="FAS" FontSize="25" 
+                                            TextColor="{StaticResource AccentLiteGreen}"
+                                            HeightRequest="44" WidthRequest="44" 
+                                            CornerRadius="90" BorderWidth="2" BorderColor="{StaticResource AccentLiteGreen}"
+                                            BackgroundColor="Transparent"
+                                            VerticalOptions="Center" 
+                                            Margin="8,0,8,0"
+                                            HorizontalOptions="Center" />
+
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Margin="0,0,8,0"
+                                           HorizontalOptions="StartAndExpand"
+                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Label Text="{Binding AccountName}"
+                                           Margin="0,0,8,0"
+                                           Grid.Row="1"
+                                           Grid.Column="1"
+                                           FontSize="12"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <BoxView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
+
+
+                                    <Label Text="{Binding AccountName}"
+                                           Grid.Column="0" Grid.RowSpan="2" Grid.Row="3" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="8,0,8,0"
+                                           FontSize="12"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="3" 
+                                           Margin="0,0,8,0"
+                                           HorizontalOptions="EndAndExpand"
+                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Image Source="arrow_up.png" Margin="0,0,8,0" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="32" WidthRequest="32"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.Header>
+                        <ContentView>
+                            <Frame BackgroundColor="{StaticResource AccentLitePurple}"  Padding="0,0,0,0"  >
+                                <Grid RowSpacing="0">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0"
+                                           HorizontalOptions="Start"
+                                           Text="BCR Card de debit"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           Style="{StaticResource TitleStyle}"/>
+
+
+                                    <Label  Text="2000.00 RON"
+                                            Grid.Row="1"
+                                           FontAttributes="Bold"
+                                            VerticalOptions="Center"
+                                           FontSize="36"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Label Text="credit-card" FontFamily="FAS"
+                                           Margin="2,8,0,0"
+                                           HeightRequest="19.44" WidthRequest="25"
+                                           FontSize="19"
+                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
+                                           Grid.Column="0"  Grid.Row="2" />
+
+                                    <Image Source="avatar.png" VerticalOptions="End"  HorizontalOptions="Center" Grid.Column="1" Grid.RowSpan="3" Margin="0,0,8,0" />
+
+
+                                </Grid>
+                            </Frame>
+                        </ContentView>
+                    </CollectionView.Header>
+
+                </CollectionView>
+                <StackLayout Padding="-16,0,-16,0">
+                    <Frame Padding="-4" BackgroundColor="{StaticResource AccentDarkPurple}">
+                        <Button Text="chart-bar" FontFamily="FAS" HorizontalOptions="Start" BackgroundColor="Transparent" FontSize="26" Clicked="Button_Clicked" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

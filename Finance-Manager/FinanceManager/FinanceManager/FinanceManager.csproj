@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SharedImage Include="Img\avatar.svg" BaseSize="100,100"/>
+    <SharedImage Include="Img\avatar.svg" BaseSize="100,100" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +59,12 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Views\AccountsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AccountViews\StatsPerAccountPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AccountViews\TransactionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AddAccountPage.xaml">

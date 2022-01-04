@@ -3,22 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinanceManager.Views.AddAccountPage"
              Title="Add Initial Accounts">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Command="{Binding ShowAddAccount}" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <Grid  VerticalOptions="Center" Padding="16,4,16,0" RowSpacing="8">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <CollectionView Grid.Row="0"
+                            
+                            Margin="-12,0,-16,0"
                             SelectionMode="Single"
                             ItemsSource="{Binding Accounts}"
                             SelectionChangedCommand="{Binding UpdateCommand}"
                             SelectedItem = "{Binding SelectedAccount}">
 
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
+                    <GridItemsLayout Orientation="Horizontal" Span="3" HorizontalItemSpacing="7" VerticalItemSpacing="7"/>
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
@@ -54,16 +60,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
-                <CollectionView.Footer>
-                    <ContentView>
-                        <StackLayout Orientation="Horizontal" BackgroundColor="Red"  Padding="4" Spacing="0">
-                            <Label Text="Add a New Account" VerticalOptions="Center"/>
-                            <Button Text="chevron-down" FontFamily="FAS" TextTransform="None"
-                                        Command="{Binding ShowAddAccount}" HeightRequest="30" BackgroundColor="Transparent" BorderColor="Transparent" Padding="0"
-                                        Style="{StaticResource MainButtonChecked}" HorizontalOptions="EndAndExpand" />
-                        </StackLayout>
-                    </ContentView>
-                </CollectionView.Footer>
+              
             </CollectionView>
 
             <Grid Grid.Row="1" IsVisible="{Binding IsShowAddAccount}">
@@ -136,7 +133,7 @@
                 </Frame>
 
                 <StackLayout  Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="8" Padding="0,16,16,16">
-                    <Button Text="Add New Account" Style="{StaticResource MainButtonUnChecked}" Command="{Binding AddNewAccount}"/>
+                    <Button Text="Add/Update" Style="{StaticResource MainButtonUnChecked}" Command="{Binding AddNewAccount}"/>
                     <Button Text="Next" Style="{StaticResource MainButtonChecked}" Clicked="Button_Clicked_1"/>
                     <Button Text="Delete" Style="{StaticResource MainButtonUnChecked}" Command="{Binding DeleteAccoutCommand}"/>
                 </StackLayout>

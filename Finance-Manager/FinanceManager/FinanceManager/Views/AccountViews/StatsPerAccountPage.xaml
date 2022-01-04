@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Title="Cash Flux"
+             x:Class="FinanceManager.Views.AccountViews.StatsPerAccountPage">
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <BoxView BackgroundColor="{StaticResource AccentLitePurple}"/>
+
+            <StackLayout Grid.RowSpan="2"  Spacing="0" >
+                <CollectionView x:Name="accountsList"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding AccountsList}">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="11" VerticalItemSpacing="11"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
+                                <Grid Padding="0,0,0,0" RowSpacing="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Grid.Column="0" Grid.RowSpan="2" 
+                                            Text="undo" Padding="0" FontFamily="FAS" FontSize="25" 
+                                            TextColor="{StaticResource AccentLiteGreen}"
+                                            HeightRequest="44" WidthRequest="44" 
+                                            CornerRadius="90" BorderWidth="2" BorderColor="{StaticResource AccentLiteGreen}"
+                                            BackgroundColor="Transparent"
+                                            VerticalOptions="Center" 
+                                            Margin="8,0,8,0"
+                                            HorizontalOptions="Center" />
+
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Margin="0,0,8,0"
+                                           HorizontalOptions="StartAndExpand"
+                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Label Text="{Binding AccountName}"
+                                           Margin="0,0,8,0"
+                                           Grid.Row="1"
+                                           Grid.Column="1"
+                                           FontSize="12"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <BoxView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
+
+
+                                    <Label Text="{Binding AccountName}"
+                                           Grid.Column="0" Grid.RowSpan="2" Grid.Row="3" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="8,0,8,0"
+                                           FontSize="12"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="3" 
+                                           Margin="0,0,8,0"
+                                           HorizontalOptions="EndAndExpand"
+                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           Style="{StaticResource TitleStyle}"/>
+
+                                    <Image Source="arrow_up.png" Margin="0,0,8,0" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="32" WidthRequest="32"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.Header>
+                        <ContentView>
+                            <Frame BackgroundColor="{StaticResource AccentLitePurple}" HeightRequest="360"  Padding="8,8,8,0"  >
+                                <Grid RowSpacing="0" Padding="0,0,0,8">
+
+                                    <Grid.RowDefinitions>
+                                        <!--0-->
+                                        <RowDefinition Height="auto" />
+                                        <!--1-->
+                                        <RowDefinition Height="auto" />
+                                        <!--2-->
+                                        <RowDefinition Height="*" />
+                                        <!--3-->
+                                        <RowDefinition Height="auto" />
+                                        <!--4-->
+                                        <RowDefinition Height=".8*" />
+                                        <!--5-->
+                                        <RowDefinition Height="auto" />
+                                        <!--6-->
+                                        <RowDefinition Height="auto" />
+                                        <!--7-->
+                                        <RowDefinition Height="*" />
+                                        <!--8-->
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Orientation="Horizontal">
+
+                                    </StackLayout>
+
+                                    <Button Grid.Column="0" Grid.RowSpan="2" BackgroundColor="Transparent" Opacity=".2" />
+                                    <Button Grid.Column="1" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
+                                    <Button Grid.Column="2" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
+                                    <Button Grid.Column="3" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
+                                    <Button Grid.Column="4" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
+                                    <Button Grid.Column="5" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
+
+                                    <microcharts:ChartView Grid.Column="0" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
+                                    <microcharts:ChartView Grid.Column="1" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
+                                    <microcharts:ChartView Grid.Column="2" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
+                                    <microcharts:ChartView Grid.Column="3" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
+                                    <microcharts:ChartView Grid.Column="4" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
+                                    <microcharts:ChartView Grid.Column="5" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
+
+                                    <Label Grid.Column="0" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <Label Grid.Column="1" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Grid.Column="2" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Grid.Column="3" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Grid.Column="4" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Grid.Column="5" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" FontAttributes="Bold" Text="Septembrie 2021" FontSize="18" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3" FontAttributes="Bold" Text="1000 RON" FontSize="18" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="0" Grid.Row="5" Text="Income" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="5" Text="100 RON" FontSize="16" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="0" Grid.Row="6" Text="Expences" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="6" Text="-100 RON" FontSize="16" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+
+
+                                    <Button Text="Char Exp" 
+                                            Style="{StaticResource MainButtonUnChecked}"
+                                                    Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="8"
+                                            />
+
+                                    <Button Text="Char Exp" 
+                                            Style="{StaticResource MainButtonUnChecked}"
+                                            
+                                                    Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="8"
+                                            />
+
+
+                                    <Button Text="Char Exp"
+                                            Style="{StaticResource MainButtonUnChecked}"
+                                                    Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="8"
+                                            />
+                                    <IndicatorView x:Name="indicatorView"
+                                                   BackgroundColor="Red"
+                                                   IndicatorsShape="Square"
+                                                   IndicatorColor="LightGray"
+                                                   SelectedIndicatorColor="DarkGray"
+                                                   HorizontalOptions="Center"
+                                                   IndicatorSize="2" />
+
+
+                                </Grid>
+                            </Frame>
+                        </ContentView>
+                    </CollectionView.Header>
+
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

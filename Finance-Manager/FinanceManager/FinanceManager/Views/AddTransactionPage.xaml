@@ -45,8 +45,9 @@
                             <StackLayout Spacing="0">
                                 <Label x:Name="DescriptionCard" Text="Account" Style="{StaticResource TextColorLabel}"/>
 
-                                <Picker ItemsSource="{Binding Accounts}"
-                                        ItemDisplayBinding="{Binding Name}"
+                                <Picker x:Name="accountPicker"
+                                        ItemsSource="{Binding Accounts}"
+                                        ItemDisplayBinding="{Binding AccountName}"
                                         SelectedItem="{Binding SelectedAccount}"
                                         Style="{StaticResource TextColorLabel}"/>
 
@@ -56,8 +57,9 @@
                             <StackLayout Spacing="0">
                                 <Label x:Name="DescriptionCategory" Text="Category" Style="{StaticResource TextColorLabel}"/>
                                 <Picker ItemsSource="{Binding Categorys}"
-                                        ItemDisplayBinding="{Binding .}"
-                                        SelectedItem="{Binding SelectedCategory}"  Style="{StaticResource TextColorLabel}" />
+                                        ItemDisplayBinding="{Binding CategoryName}"
+                                        SelectedItem="{Binding SelectedCategory}"  
+                                        Style="{StaticResource TextColorLabel}" />
                             </StackLayout>
                         </Frame>
                     </Grid>

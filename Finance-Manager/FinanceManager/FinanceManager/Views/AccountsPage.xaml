@@ -6,11 +6,6 @@
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
 
     <ContentPage.Content>
-        <!--
-        <StackLayout Padding="10">
-          
-        </StackLayout>-->
-
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -21,9 +16,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <BoxView BackgroundColor="{StaticResource AccentLitePurple}" />
-            <StackLayout  Grid.RowSpan="4" Padding="16,0,16,0"
-                >
+            <BoxView BackgroundColor="{StaticResource AccentLitePurple}"/>
+            <StackLayout  Grid.RowSpan="4" Padding="16,0,16,0" >
                 <CollectionView x:Name="accountsList"
                             Grid.RowSpan="4"
                             SelectionMode="Single"
@@ -72,14 +66,14 @@
                                             Padding="20,0,0,0"
                                             Text="New Transaction" BackgroundColor="Transparent" TextColor="{StaticResource AccentDarkPurple}"
                                             FontAttributes="Bold"
-                                            HorizontalOptions="Start" HeightRequest="10" />
-                                        <Image Source="avatar.png" HeightRequest="44" WidthRequest="44" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,8,0" />
+                                            HorizontalOptions="Start" HeightRequest="10" 
+                                            Clicked="Button_Clicked"/>
+                                    <Image Source="avatar.png" HeightRequest="44" WidthRequest="44" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,8,0" />
                                     <Label Text="credit-card" FontFamily="FAS"
                                            HeightRequest="19.44" WidthRequest="25"
                                            FontSize="19"
                                             TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.RowSpan="2" Grid.Row="3" />
-
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -87,7 +81,30 @@
 
                     <CollectionView.Header>
                         <ContentView>
-                            <BoxView BackgroundColor="{StaticResource AccentLitePurple}" HeightRequest="82" />
+                            <Frame BackgroundColor="{StaticResource AccentLitePurple}"  Padding="0,16,0,16" HeightRequest="82" >
+                                <StackLayout  Spacing="0">
+                                    <StackLayout Orientation="Horizontal" >
+
+                                        <Label Grid.Row="1"
+                                           Padding="0,0,0,0"
+                                           HorizontalOptions="Start"
+                                           Text="Total"
+                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           Style="{StaticResource TitleStyle}"/>
+                                        <Button HorizontalOptions="EndAndExpand" Text="plus wallet" FontSize="20" Style="{StaticResource MainButtonChecked}" Clicked="Button_Clicked_1"  Padding="0" FontFamily="FAS"/>
+                                    </StackLayout>
+                                    <Label  Text="{Binding Path=TotalBalance,StringFormat='{0:F2} RON'}"
+                                           Padding="0,0,0,0"
+                                       FontAttributes="Bold"
+                                       FontSize="38"
+                                       TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
+                                       Style="{StaticResource TitleStyle}"/>
+
+
+                                </StackLayout>
+                            </Frame>
                         </ContentView>
                     </CollectionView.Header>
 

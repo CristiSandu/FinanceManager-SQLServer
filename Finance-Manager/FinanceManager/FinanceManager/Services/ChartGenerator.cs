@@ -36,6 +36,36 @@ namespace FinanceManager.Services
             "ChartColor6",
         };
 
+        public static Chart GerateIncomExpChart(float income, float expences)
+        {
+            Color color1 = (Color)Application.Current.Resources["WhitePurple"];
+            Color color2 = Color.White;
+
+            List<Entry> entrys = new List<Entry>
+            {
+                new Entry(income)
+                {
+                    Color = SKColor.Parse(color2.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color1.ToHex()),
+                },
+                new Entry(expences)
+                {
+                    Color = SKColor.Parse(color1.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color2.ToHex()),
+                }
+            };
+
+            return new BarChart
+            {
+                Entries = entrys,
+                LabelTextSize = 30f,
+                MaxValue = 5000,
+                Margin = 0,
+                LabelOrientation = Orientation.Horizontal,
+                ValueLabelOrientation = Orientation.Horizontal,
+                BackgroundColor = SKColor.Parse(Color.Transparent.ToHex())
+            };
+        }
 
         public static async Task<Chart> GetOverView(DateTime fromPeriod)
         {
@@ -78,7 +108,6 @@ namespace FinanceManager.Services
                 BackgroundColor = SKColor.Parse(Color.Transparent.ToHex())
             };
         }
-
 
         public static async Task<Chart> GetIncomesGraf(DateTime fromPeriod)
         {

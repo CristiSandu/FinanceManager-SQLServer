@@ -16,18 +16,7 @@ namespace FinanceManager.Views
     {
         public List<Account> Accounts { get; set; }
 
-        public List<string> Categorys { get; set; } = new List<string>
-        {
-            "Shopping",
-            "Utilities",
-            "Salary",
-            "Services",
-            "Food",
-            "Gadgets",
-            "Persons"
-
-        };
-
+        public List<Categorie> Categorys { get; set; } 
         public List<string> Types { get; set; } = new List<string>
         {
             "Income",
@@ -40,7 +29,7 @@ namespace FinanceManager.Views
         public DateTime Date { get; set; } = DateTime.Now;
 
         public Account SelectedAccount { get; set; }
-        public string SelectedCategory { get; set; }
+        public Categorie SelectedCategory { get; set; }
         public string SelectedTypes { get; set; }
 
         public AddTransactionPage()
@@ -48,30 +37,36 @@ namespace FinanceManager.Views
             InitializeComponent();
             Task.Run(async () =>
             {
-                Accounts = new List<Account>();
+                Accounts = await Services.APIConnection.GetCollection<Models.Account>("/api/Account");
+                Categorys = await Services.APIConnection.GetCollection<Models.Categorie>("/api/Categorie");
                 SelectedAccount = new Account();
             }).Wait();
             BindingContext = this;
         }
 
+        public AddTransactionPage(Account account)
+        {
+            InitializeComponent();
+            Task.Run(async () =>
+            {
+                Accounts = await Services.APIConnection.GetCollection<Models.Account>("/api/Account");
+                Categorys = await Services.APIConnection.GetCollection<Models.Categorie>("/api/Categorie");
+                SelectedAccount = account;
+            }).Wait();
+            
+            accountPicker.SelectedIndex = account.AccountId - 1;
+            BindingContext = this;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            accountPicker.SelectedIndex = SelectedAccount.AccountId - 1;
+        }
+
         private async void SaveBtn_Clicked(object sender, EventArgs e)
         {
-            await Services.MongoService.InsertItem(new Models.Transaction
-            {
-                Name = Name,
-                Description = Description,
-                Price = (float)Price,
-                Category = SelectedCategory,
-                Date = Date,
-                Type = SelectedTypes,
-                AccountId = null
-            });
-
-           
-
-          
-
-
             await Navigation.PopAsync();
         }
 
