@@ -28,6 +28,13 @@ namespace FinanceManagerAPI.Controllers
             return await _context.Stats.ToListAsync();
         }
 
+        // GET: api/Stats/GetSmallStats
+        [HttpGet("GetSmallStats")]
+        public async Task<ActionResult<List<SmallStat>>> GetTransactionForAnAccount()
+        {
+            return await _context.SmallStats.FromSqlRaw($"exec GetSmallStats ").ToListAsync();
+        } 
+
         // GET: api/Stats/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Stat>> GetStat(int id)

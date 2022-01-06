@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FinanceManagerAPI.Database;
 using System.Drawing;
-
+using FinanceManagerAPI.Models;
 
 namespace FinanceManagerAPI.Controllers
 {
@@ -25,11 +25,54 @@ namespace FinanceManagerAPI.Controllers
         }
 
         // GET: api/TransactionAcc/GetTransactionForAnAccount
-        [HttpGet("GetTransactionForAnAccount")]
+        [HttpGet("GetTransactionForAnAccount/{id_account}")]
         public async Task<ActionResult<IEnumerable<TransactionInfoExt>>> GetTransactionForAnAccount(int id_account)
         {
             return await _context.TransactionInfoExts.FromSqlRaw($"exec GetTransactionForAnAccount {id_account}").ToListAsync();
         }
+
+        // GET: api/TransactionAcc/GetTransactionForAnAccount
+        [HttpGet("GroupTransactionsByCategorys")]
+        public async Task<ActionResult<List<GroupDateTransactionCategoryModel>>> GroupTransactionsByCategorys(int? id_account = 1, char? statType = 'M')
+        {
+            var list_of_categoris = await _context.Categories.ToListAsync();
+
+            List<GroupDateTransactionCategoryModel> list_of_dates = new();
+
+            DateTime dateT = DateTime.Now;
+
+            List<DateTime> dates = new();
+            for (int i = 0; i < 6; i++)
+            {
+                dates.Add(dateT);
+                dateT = dateT.AddMonths(-1);
+            }
+
+            foreach (var date in dates)
+            {
+                GroupDateTransactionCategoryModel current_date_transactions = new GroupDateTransactionCategoryModel { DateGoup = new DateTime(date.Year, date.Month, 1), CategoryTransaction = new() };
+
+                foreach (var c in list_of_categoris)
+                {
+
+                   var output =  await _context.TransactionInfoExts.FromSqlRaw($"exec GroupByCategorys '{c.CategoryName}', '{date.ToString("yyyy-MM-dd")}', '{statType}', {id_account}").ToListAsync();
+                    if (output.Count == 0)
+                        continue;
+
+                    current_date_transactions.CategoryTransaction.Add(new GroupByCategotyModel
+                    {
+                        CategotyName = c.CategoryName,
+                        TransactionsList = output
+
+                    });
+                }
+
+                list_of_dates.Add(current_date_transactions);
+            }
+
+            return list_of_dates;
+        }
+
 
 
         // GET: api/TransactionAcc

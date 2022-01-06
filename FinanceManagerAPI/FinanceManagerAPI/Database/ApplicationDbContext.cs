@@ -21,6 +21,7 @@ namespace FinanceManagerAPI.Database
         public virtual DbSet<Bank> Banks { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Merchant> Merchants { get; set; } = null!;
+        public virtual DbSet<SmallStat> SmallStats { get; set; } = null!;
         public virtual DbSet<Stat> Stats { get; set; } = null!;
         public virtual DbSet<TransactionAcc> TransactionAccs { get; set; } = null!;
         public virtual DbSet<TransactionInfoExt> TransactionInfoExts { get; set; } = null!;
