@@ -1,4 +1,5 @@
 ﻿using FinanceManager.Models;
+using FinanceManager.Models.AccountModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +29,7 @@ namespace FinanceManager.Views
         public float? Price { get; set; } = null;
         public DateTime Date { get; set; } = DateTime.Now;
 
-        public Account SelectedAccount { get; set; }
+        public AccountInfoExt SelectedAccount { get; set; }
         public Categorie SelectedCategory { get; set; }
         public string SelectedTypes { get; set; }
 
@@ -39,12 +40,12 @@ namespace FinanceManager.Views
             {
                 Accounts = await Services.APIConnection.GetCollection<Models.Account>("/api/Account");
                 Categorys = await Services.APIConnection.GetCollection<Models.Categorie>("/api/Categorie");
-                SelectedAccount = new Account();
+                SelectedAccount = new AccountInfoExt();
             }).Wait();
             BindingContext = this;
         }
 
-        public AddTransactionPage(Account account)
+        public AddTransactionPage(AccountInfoExt account)
         {
             InitializeComponent();
             Task.Run(async () =>
@@ -68,6 +69,7 @@ namespace FinanceManager.Views
         private async void SaveBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+
         }
 
         private async void CancelBtn_Clicked(object sender, EventArgs e)

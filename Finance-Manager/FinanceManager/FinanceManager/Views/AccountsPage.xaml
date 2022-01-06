@@ -18,11 +18,12 @@
             </Grid.ColumnDefinitions>
             <BoxView BackgroundColor="{StaticResource AccentLitePurple}"/>
             <StackLayout  Grid.RowSpan="4" Padding="16,0,16,0" >
-                <CollectionView x:Name="accountsList"
+                <CollectionView 
                             Grid.RowSpan="4"
                             SelectionMode="Single"
                             ItemsSource="{Binding AccountsList}"
-                            SelectionChanged="accountsList_SelectionChanged">
+                            SelectedItem="{Binding SelectedAccount }"
+                            SelectionChangedCommand="{Binding AccountSelectedCommand}">
 
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="11" VerticalItemSpacing="11"/>
@@ -69,7 +70,7 @@
                                             HorizontalOptions="Start" HeightRequest="10" 
                                             Clicked="Button_Clicked"/>
                                     <Image Source="avatar.png" HeightRequest="44" WidthRequest="44" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,8,0" />
-                                    <Label Text="credit-card" FontFamily="FAS"
+                                    <Label Text="{Binding Icon}" FontFamily="FAS"
                                            HeightRequest="19.44" WidthRequest="25"
                                            FontSize="19"
                                             TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
@@ -84,7 +85,6 @@
                             <Frame BackgroundColor="{StaticResource AccentLitePurple}"  Padding="0,16,0,16" HeightRequest="82" >
                                 <StackLayout  Spacing="0">
                                     <StackLayout Orientation="Horizontal" >
-
                                         <Label Grid.Row="1"
                                            Padding="0,0,0,0"
                                            HorizontalOptions="Start"
@@ -95,14 +95,12 @@
                                            Style="{StaticResource TitleStyle}"/>
                                         <Button HorizontalOptions="EndAndExpand" Text="plus wallet" FontSize="20" Style="{StaticResource MainButtonChecked}" Clicked="Button_Clicked_1"  Padding="0" FontFamily="FAS"/>
                                     </StackLayout>
-                                    <Label  Text="{Binding Path=TotalBalance,StringFormat='{0:F2} RON'}"
+                                    <Label  Text="{Binding Path=SmallStats.TotalBalance,StringFormat='{0:F2} RON'}"
                                            Padding="0,0,0,0"
                                        FontAttributes="Bold"
                                        FontSize="38"
                                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
                                        Style="{StaticResource TitleStyle}"/>
-
-
                                 </StackLayout>
                             </Frame>
                         </ContentView>

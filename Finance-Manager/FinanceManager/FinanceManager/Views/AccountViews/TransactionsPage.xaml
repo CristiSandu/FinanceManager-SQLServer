@@ -18,7 +18,7 @@
                 <CollectionView x:Name="accountsList"
                             Grid.RowSpan="4"
                             SelectionMode="Single"
-                            ItemsSource="{Binding AccountsList}"
+                            ItemsSource="{Binding TransationList}"
                             >
 
                     <CollectionView.ItemsLayout>
@@ -37,16 +37,16 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width=".4*" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
 
                                     <Button Grid.Column="0" Grid.RowSpan="2" 
-                                            Text="undo" Padding="0" FontFamily="FAS" FontSize="25" 
-                                            TextColor="{StaticResource AccentLiteGreen}"
+                                            Text="{Binding CategoryIcon}" Padding="0" FontFamily="FAS" FontSize="25" 
+                                            TextColor="{Binding ColorCategory}"
                                             HeightRequest="44" WidthRequest="44" 
-                                            CornerRadius="90" BorderWidth="2" BorderColor="{StaticResource AccentLiteGreen}"
+                                            CornerRadius="90" BorderWidth="2" BorderColor="{Binding ColorCategory}"
                                             BackgroundColor="Transparent"
                                             VerticalOptions="Center" 
                                             Margin="8,0,8,0"
@@ -56,13 +56,13 @@
                                            Grid.Column="1"
                                            Margin="0,0,8,0"
                                            HorizontalOptions="StartAndExpand"
-                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           Text="{Binding Path=MerchantName}"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Text="{Binding AccountName}"
+                                    <Label Text="{Binding TransactionDate, StringFormat='{0:dd.MM.yyyy}'}"
                                            Margin="0,0,8,0"
                                            Grid.Row="1"
                                            Grid.Column="1"
@@ -73,9 +73,9 @@
                                     <BoxView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
 
 
-                                    <Label Text="{Binding AccountName}"
-                                           Grid.Column="0" Grid.RowSpan="2" Grid.Row="3" 
-                                           HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{Binding CategoryName}"
+                                           Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="3" 
+                                           HorizontalOptions="StartAndExpand"
                                            Margin="8,0,8,0"
                                            FontSize="12"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
@@ -84,13 +84,17 @@
                                     <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="3" 
                                            Margin="0,0,8,0"
                                            HorizontalOptions="EndAndExpand"
-                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           Text="{Binding Path=ShowPrice,StringFormat='{0:F2} RON'}"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            FontAttributes="Bold"
                                            FontSize="18"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Image Source="arrow_up.png" Margin="0,0,8,0" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="32" WidthRequest="32"/>
+                                    <Label Text="{Binding TypeIcon}" 
+                                           TextColor="{Binding ArrowColor}" 
+                                           FontFamily="FAS" Margin="0,0,16,0" 
+                                           Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" 
+                                           HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="28"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -114,14 +118,14 @@
 
                                     <Label Grid.Row="0"
                                            HorizontalOptions="Start"
-                                           Text="BCR Card de debit"
+                                           Text="{Binding AccountInfo.AccountName}"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
                                            FontAttributes="Bold"
                                            FontSize="18"
                                            Style="{StaticResource TitleStyle}"/>
 
 
-                                    <Label  Text="2000.00 RON"
+                                    <Label  Text="{Binding AccountInfo.AccountBalance,StringFormat='{0:F2} RON'}"
                                             Grid.Row="1"
                                            FontAttributes="Bold"
                                             VerticalOptions="Center"
@@ -129,7 +133,7 @@
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Text="credit-card" FontFamily="FAS"
+                                    <Label Text="{Binding AccountInfo.Icon}" FontFamily="FAS"
                                            Margin="2,8,0,0"
                                            HeightRequest="19.44" WidthRequest="25"
                                            FontSize="19"

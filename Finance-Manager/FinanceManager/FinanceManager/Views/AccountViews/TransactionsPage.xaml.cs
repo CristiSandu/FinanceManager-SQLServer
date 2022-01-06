@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinanceManager.Models.AccountModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,81 +14,10 @@ namespace FinanceManager.Views.AccountViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TransactionsPage : ContentPage
     {
-
-        public ObservableCollection<Models.Account> AccountsList { get; set; } = new ObservableCollection<Models.Account>
-        {
-            new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            },
-            new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            },
-            new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            },
-            new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            },
-             new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000,
-
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            }, new Models.Account
-            {
-                AccountName = "BCR",
-                AccountBalance = 2000
-            },
-        };
-
-        public TransactionsPage()
+        public TransactionsPage(AccountInfoExt accountInfoExt)
         {
             InitializeComponent();
-            BindingContext = this;
+            BindingContext = new ViewModels.TransactionPageViewModel(accountInfoExt);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
