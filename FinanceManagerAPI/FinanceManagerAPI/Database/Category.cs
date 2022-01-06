@@ -28,6 +28,10 @@ namespace FinanceManagerAPI.Database
         public string? Icon { get; set; }
         [Column("time_stamp", TypeName = "datetime")]
         public DateTime? TimeStamp { get; set; }
+        [Column("color")]
+        [StringLength(35)]
+        [Unicode(false)]
+        public string? Color { get; set; }
 
         [InverseProperty(nameof(Merchant.Category))]
         public virtual ICollection<Merchant> Merchants { get; set; }

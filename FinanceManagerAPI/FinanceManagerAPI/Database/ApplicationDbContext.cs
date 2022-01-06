@@ -17,11 +17,13 @@ namespace FinanceManagerAPI.Database
         }
 
         public virtual DbSet<Account> Accounts { get; set; } = null!;
+        public virtual DbSet<AccountInfoExt> AccountInfoExts { get; set; } = null!;
         public virtual DbSet<Bank> Banks { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Merchant> Merchants { get; set; } = null!;
         public virtual DbSet<Stat> Stats { get; set; } = null!;
         public virtual DbSet<TransactionAcc> TransactionAccs { get; set; } = null!;
+        public virtual DbSet<TransactionInfoExt> TransactionInfoExts { get; set; } = null!;
         public virtual DbSet<Type> Types { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

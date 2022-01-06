@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FinanceManagerAPI.Database;
+using System.Drawing;
+
 
 namespace FinanceManagerAPI.Controllers
 {
@@ -16,15 +18,25 @@ namespace FinanceManagerAPI.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+
         public TransactionAccController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        // GET: api/TransactionAcc/GetTransactionForAnAccount
+        [HttpGet("GetTransactionForAnAccount")]
+        public async Task<ActionResult<IEnumerable<TransactionInfoExt>>> GetTransactionForAnAccount(int id_account)
+        {
+            return await _context.TransactionInfoExts.FromSqlRaw($"exec GetTransactionForAnAccount {id_account}").ToListAsync();
+        }
+
+
         // GET: api/TransactionAcc
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TransactionAcc>>> GetTransactionAccs()
         {
+            //var outval = await _context.TransactionAccs.FromSqlRaw($"exec Generate_Product {"'2022-01-09'"}, {1}, {1}").ToListAsync();
             return await _context.TransactionAccs.ToListAsync();
         }
 

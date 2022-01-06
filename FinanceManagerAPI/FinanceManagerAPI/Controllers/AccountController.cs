@@ -10,8 +10,8 @@ using FinanceManagerAPI.Database;
 
 namespace FinanceManagerAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -28,11 +28,19 @@ namespace FinanceManagerAPI.Controllers
             return await _context.Accounts.ToListAsync();
         }
 
+        // GET: api/AccountsInfoExt
+        [HttpGet("AccountsInfoExt")]
+        public async Task<ActionResult<IEnumerable<AccountInfoExt>>> GetAccountsInfoExt()
+        {
+            return await _context.AccountInfoExts.FromSqlRaw("EXEC GetAccoutsInfos").ToListAsync();
+        }
+
         // GET: api/Account/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Account>> GetAccount(int id)
         {
             var account = await _context.Accounts.FindAsync(id);
+
 
             if (account == null)
             {

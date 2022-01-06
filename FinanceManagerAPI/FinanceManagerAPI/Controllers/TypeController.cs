@@ -29,6 +29,13 @@ namespace FinanceManagerAPI.Controllers
             return await _context.Types.ToListAsync();
         }
 
+        // GET: api/Type/{Table}
+        [HttpGet("TableName")]
+        public async Task<ActionResult<IEnumerable<Type>>> GetTypesByTables(string tableName)
+        {
+            return await _context.Types.FromSqlRaw($"EXEC GetTypesByTables '{tableName}'").ToListAsync();
+        }
+
         // GET: api/Type/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Type>> GetType(int id)

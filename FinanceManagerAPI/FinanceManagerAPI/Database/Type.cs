@@ -26,6 +26,10 @@ namespace FinanceManagerAPI.Database
         [StringLength(35)]
         [Unicode(false)]
         public string? TableName { get; set; }
+        [Column("icon")]
+        [StringLength(35)]
+        [Unicode(false)]
+        public string? Icon { get; set; }
 
         [InverseProperty(nameof(Account.Types))]
         public virtual ICollection<Account> Accounts { get; set; }
