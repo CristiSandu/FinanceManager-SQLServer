@@ -1,4 +1,6 @@
-﻿using Microcharts;
+﻿using FinanceManager.Models.AccountModels;
+using FinanceManager.ViewModels;
+using Microcharts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -94,6 +96,12 @@ namespace FinanceManager.Views.AccountViews
 
             InitializeComponent();
             BindingContext = this;
+        }
+
+        public StatsPerAccountPage(AccountInfoExt account)
+        {
+            InitializeComponent();
+            BindingContext = new StatsPerAccountPageViewModel(account);
         }
     }
 }

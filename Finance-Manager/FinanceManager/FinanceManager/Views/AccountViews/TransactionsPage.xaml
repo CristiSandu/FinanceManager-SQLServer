@@ -19,6 +19,7 @@
                             Grid.RowSpan="4"
                             SelectionMode="Single"
                             ItemsSource="{Binding TransationList}"
+                            
                             >
 
                     <CollectionView.ItemsLayout>
@@ -151,7 +152,7 @@
                 </CollectionView>
                 <StackLayout Padding="-16,0,-16,0">
                     <Frame Padding="-4" BackgroundColor="{StaticResource AccentDarkPurple}">
-                        <Button Text="chart-bar" FontFamily="FAS" HorizontalOptions="Start" BackgroundColor="Transparent" FontSize="26" Clicked="Button_Clicked" />
+                        <Button Text="chart-bar" FontFamily="FAS" HorizontalOptions="Start" BackgroundColor="Transparent" FontSize="26" Command="{Binding GoToStats}" />
                     </Frame>
                 </StackLayout>
             </StackLayout>

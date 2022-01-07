@@ -24,5 +24,10 @@ namespace FinanceManager.Views.AccountViews
         {
            await Navigation.PushAsync(new StatsPerAccountPage());
         }
+
+        private void accountsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -27,9 +27,6 @@ namespace FinanceManager.Services
             await db.CreateTableAsync<Models.Account>();
 
         }
-
-
-
         public static async Task AddTransaction(Transaction transaction)
         {
             await Init();
@@ -62,7 +59,6 @@ namespace FinanceManager.Services
 
             return trans;
         }
-
         public static async Task<bool> VerifyIfAccExist(string name)
         {
             await Init();

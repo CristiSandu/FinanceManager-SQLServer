@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microcharts;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,10 +21,10 @@ namespace FinanceManager.Models
         public int AccountId { get; set; }
 
         [JsonProperty(PropertyName = "incomes")]
-        public int Incomes { get; set; }
+        public float Incomes { get; set; }
 
         [JsonProperty(PropertyName = "expences")]
-        public int Expences { get; set; }
+        public float Expences { get; set; }
 
         [JsonProperty(PropertyName = "timeStamp")]
         public DateTime TimeStamp { get; set; }
@@ -33,5 +34,13 @@ namespace FinanceManager.Models
 
         [JsonProperty(PropertyName = "types")]
         public object Types { get; set; }
+
+        public Chart ChartGen => Services.ChartGenerator.GerateIncomExpChart(Incomes, Expences);
+        public string Month => StatsDate.ToString("MMM");
+
+        public string DateView => StatsDate.ToString("MMMM yyyy");
+        public float BalanceIncOut => Incomes - Expences;
+
+        public float ExpencesView => Expences * -1;
     }
 }

@@ -19,7 +19,7 @@
             <StackLayout Grid.RowSpan="2"  Spacing="0" >
                 <CollectionView x:Name="accountsList"
                             SelectionMode="Single"
-                            ItemsSource="{Binding AccountsList}">
+                            ItemsSource="{Binding TransactionByDateBase.CategoryTransaction}">
 
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="11" VerticalItemSpacing="11"/>
@@ -56,13 +56,13 @@
                                            Grid.Column="1"
                                            Margin="0,0,8,0"
                                            HorizontalOptions="StartAndExpand"
-                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
+                                           Text="{Binding Path=CategoryName,StringFormat='{0:F2} RON'}"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Text="{Binding AccountName}"
+                                    <Label Text="{Binding TotalSum}"
                                            Margin="0,0,8,0"
                                            Grid.Row="1"
                                            Grid.Column="1"
@@ -129,19 +129,45 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
-
                                     </Grid.ColumnDefinitions>
 
-                                    <StackLayout Orientation="Horizontal">
+                                    <CollectionView Grid.ColumnSpan="6"
+                                                    Grid.RowSpan="2"
+                                                    BackgroundColor="Red"
+                                                    ItemsSource="{Binding Statistics}"
+                                                    SelectedItem="{Binding SelectedStatistic}"
+                                                    >
+                                        <CollectionView.ItemsLayout>
+                                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="2" VerticalItemSpacing="2"/>
+                                        </CollectionView.ItemsLayout>
 
-                                    </StackLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
+                                                    <Grid Padding="0,0,0,0" RowSpacing="1">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
 
-                                    <Button Grid.Column="0" Grid.RowSpan="2" BackgroundColor="Transparent" Opacity=".2" />
-                                    <Button Grid.Column="1" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
-                                    <Button Grid.Column="2" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
-                                    <Button Grid.Column="3" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
-                                    <Button Grid.Column="4" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
-                                    <Button Grid.Column="5" Grid.RowSpan="2" BackgroundColor="White" Opacity=".2" />
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0" Grid.RowSpan="2" Text="BGraf1" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
+                                                        <microcharts:ChartView Grid.Column="0" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding ChartGen}" />
+                                                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Month}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                    </Grid>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                    <!--
+                                    <Button x:Name="ButtonGraf1" Grid.Column="0" Grid.RowSpan="2" Text="BGraf1" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
+                                    <Button x:Name="ButtonGraf2" Grid.Column="1" Grid.RowSpan="2" Text="BGraf2" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
+                                    <Button x:Name="ButtonGraf3" Grid.Column="2" Grid.RowSpan="2" Text="BGraf3" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
+                                    <Button x:Name="ButtonGraf4" Grid.Column="3" Grid.RowSpan="2" Text="BGraf4" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
+                                    <Button x:Name="ButtonGraf5" Grid.Column="4" Grid.RowSpan="2" Text="BGraf5" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
+                                    <Button x:Name="ButtonGraf6" Grid.Column="5" Grid.RowSpan="2" Text="BGraf6" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
 
                                     <microcharts:ChartView Grid.Column="0" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
                                     <microcharts:ChartView Grid.Column="1" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding GrafData}" />
@@ -156,41 +182,16 @@
                                     <Label Grid.Column="3" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Label Grid.Column="4" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Label Grid.Column="5" Grid.Row="1" Text="Aug" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    -->
 
-                                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" FontAttributes="Bold" Text="Septembrie 2021" FontSize="18" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-                                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3" FontAttributes="Bold" Text="1000 RON" FontSize="18" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" FontAttributes="Bold" Text="{Binding SelectedStatistic.DateView}" FontSize="18" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3" FontAttributes="Bold" Text="{Binding Path=SelectedStatistic.BalanceIncOut,StringFormat='{0:F2} RON'}" FontSize="18" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
 
                                     <Label Grid.Column="0" Grid.Row="5" Text="Income" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="5" Text="100 RON" FontSize="16" HorizontalOptions="End" VerticalOptions="Center"/>
+                                    <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="5" Text="{Binding Path=SelectedStatistic.Incomes,StringFormat='{0:F2} RON'}" FontSize="16" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                     <Label Grid.Column="0" Grid.Row="6" Text="Expences" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="6" Text="-100 RON" FontSize="16" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-
-
-                                    <Button Text="Char Exp" 
-                                            Style="{StaticResource MainButtonUnChecked}"
-                                                    Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="8"
-                                            />
-
-                                    <Button Text="Char Exp" 
-                                            Style="{StaticResource MainButtonUnChecked}"
-                                            
-                                                    Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="8"
-                                            />
-
-
-                                    <Button Text="Char Exp"
-                                            Style="{StaticResource MainButtonUnChecked}"
-                                                    Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="8"
-                                            />
-                                    <IndicatorView x:Name="indicatorView"
-                                                   BackgroundColor="Red"
-                                                   IndicatorsShape="Square"
-                                                   IndicatorColor="LightGray"
-                                                   SelectedIndicatorColor="DarkGray"
-                                                   HorizontalOptions="Center"
-                                                   IndicatorSize="2" />
-
+                                    <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="6" Text="{Binding Path=SelectedStatistic.ExpencesView,StringFormat='{0:F2} RON'}" FontSize="16" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
 
                                 </Grid>
                             </Frame>

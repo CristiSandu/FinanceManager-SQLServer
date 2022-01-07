@@ -6,6 +6,9 @@ using FinanceManager.Models.TransactionModels;
 
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
+using System.Windows.Input;
+using FinanceManager.Views.AccountViews;
 
 namespace FinanceManager.ViewModels
 {
@@ -14,6 +17,7 @@ namespace FinanceManager.ViewModels
         public ObservableCollection<TransactionInfoExt> TransationList { get; set; }
         public TransactionInfoExt SelectedTransaction { get; set; }
         public AccountInfoExt AccountInfo { get; set; }
+        public ICommand GoToStats { get; set; }
         public TransactionPageViewModel(AccountInfoExt accountInfoExt)
         {
             Task.Run(async () =>
@@ -22,6 +26,11 @@ namespace FinanceManager.ViewModels
                 TransationList = new ObservableCollection<TransactionInfoExt>(listOfAccounts);
                 AccountInfo = accountInfoExt;
             }).Wait();
+
+            GoToStats = new Command(async () =>
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new StatsPerAccountPage(AccountInfo));
+            });
         }
     }
 }
