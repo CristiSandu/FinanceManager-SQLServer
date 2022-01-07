@@ -33,7 +33,15 @@ namespace FinanceManagerAPI.Controllers
         public async Task<ActionResult<List<SmallStat>>> GetTransactionForAnAccount()
         {
             return await _context.SmallStats.FromSqlRaw($"exec GetSmallStats ").ToListAsync();
-        } 
+        }
+
+        // GET: api/Stats/GetStatsForAPeriod
+        //https://localhost:7025/api/Stats/GetStatsForAPeriod?type_id=6&account_id=2&endDate=2024-05-01&how_manny=6'
+        [HttpGet("GetStatsForAPeriod")]
+        public async Task<ActionResult<List<Stat>>> GetStatsForAPeriod(int type_id, int account_id, DateTime endDate, int how_manny)
+        {
+            return await _context.Stats.FromSqlRaw($"exec GetStatsForAPeriod {type_id}, {account_id}, '{endDate.ToString("yyyy-MM-dd")}', {how_manny}").ToListAsync();
+        }
 
         // GET: api/Stats/5
         [HttpGet("{id}")]
