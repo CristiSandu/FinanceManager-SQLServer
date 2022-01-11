@@ -35,7 +35,7 @@ namespace FinanceManager.Models
         [JsonProperty(PropertyName = "types")]
         public object Types { get; set; }
 
-        public Chart ChartGen => Services.ChartGenerator.GerateIncomExpChart(Incomes, Expences);
+        public Chart ChartGen => Services.ChartGenerator.GerateIncomExpChart(Incomes + 1, Expences +1);
         public string Month => StatsDate.ToString("MMM");
 
         public string DateView => StatsDate.ToString("MMMM yyyy");

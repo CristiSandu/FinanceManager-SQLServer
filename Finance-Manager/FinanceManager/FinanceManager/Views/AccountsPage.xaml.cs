@@ -1,6 +1,7 @@
 ﻿using FinanceManager.Models;
 using FinanceManager.Models.AccountModels;
 using FinanceManager.Views.AccountViews;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,5 +35,7 @@ namespace FinanceManager.Views
         {
             await Navigation.PushAsync(new AddAccountPage());
         }
+
+       
     }
 }

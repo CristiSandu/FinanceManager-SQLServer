@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="FinanceManager.Views.PopUps.TransactionPopUp"
+              xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+
+    <StackLayout VerticalOptions="Center" Padding="10" >
+        <Frame Style="{StaticResource PopUpFrame}" CornerRadius="20">
+            <Grid Padding="0,0,0,0" RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Grid.RowSpan="3" 
+                        Text="utensils" Padding="0" FontFamily="FAS" FontSize="25" 
+                        TextColor="Green"
+                        HeightRequest="44" WidthRequest="44" 
+                        CornerRadius="90" BorderWidth="2" BorderColor="Green"
+                        BackgroundColor="Transparent"
+                        VerticalOptions="Center" 
+                        Margin="8,0,8,0"
+                        HorizontalOptions="Center" />
+
+                <Label Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,8,0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Emag"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        Style="{StaticResource TitleStyle}"/>
+
+                <Label Text="Emag"
+                        Margin="0,0,8,0"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="12"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        Style="{StaticResource TitleStyle}"/>
+
+                <Label Text="23.04.20201"
+                        Margin="0,0,8,0"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontSize="12"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        Style="{StaticResource TitleStyle}"/>
+
+                <Label Text="arrow-up" 
+                        TextColor="{Binding ArrowColor}" 
+                        FontFamily="FAS" Margin="0,0,16,0" 
+                        Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" 
+                        HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="28"/>
+
+                <Label Text="Description test heare  "
+                        Margin="0,0,8,0"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontSize="12"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        Style="{StaticResource TitleStyle}"/>
+
+                <BoxView Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
+
+
+                <Label Text="Food"
+                        Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="3" 
+                        HorizontalOptions="StartAndExpand"
+                        Margin="8,0,8,0"
+                        FontSize="12"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        Style="{StaticResource TitleStyle}"/>
+
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="5" 
+                        Margin="0,0,8,0"
+                        HorizontalOptions="EndAndExpand"
+                        Text="-50,56 RON"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Style="{StaticResource TitleStyle}"/>
+
+            </Grid>
+        </Frame>
+    </StackLayout>
+</rg:PopupPage>

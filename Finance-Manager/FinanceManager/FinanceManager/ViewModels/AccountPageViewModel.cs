@@ -1,6 +1,7 @@
 ﻿using FinanceManager.Models.AccountModels;
 using FinanceManager.Models.StatsModels;
 using FinanceManager.Views.AccountViews;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,6 +20,9 @@ namespace FinanceManager.ViewModels
         public SmallStat SmallStats { get; set; }
 
         public ICommand AccountSelectedCommand { get; set; }
+        
+        public ICommand OpenPopUpInfo { get; set; }
+
 
         public AccountPageViewModel()
         {
@@ -39,6 +43,11 @@ namespace FinanceManager.ViewModels
                     SelectedAccount = null;
                     OnPropertyChanged(nameof(SelectedAccount));
                 }
+            });
+
+            OpenPopUpInfo = new Command(async () =>
+            {
+                await PopupNavigation.Instance.PushAsync(new Views.PopUps.SmallStatisticsPopUp { BindingContext = SmallStats });
             });
         }
     }

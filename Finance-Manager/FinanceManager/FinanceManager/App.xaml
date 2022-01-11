@@ -11,9 +11,6 @@
             <Color x:Key="AccentDarkPurple">#331E38</Color>
             <Color x:Key="WhitePurple">#d4d2df</Color>
 
-
-            
-
             <Color x:Key="ChartColor1">#FF0000</Color>
             <Color x:Key="ChartColor2">#FF8700</Color>
             <Color x:Key="ChartColor3">#FFD300</Color>
@@ -53,6 +50,22 @@
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="BorderColor" Value="{AppThemeBinding Dark={StaticResource AccentYellow}, Light={StaticResource AccentDarkGreen}}" />
                 <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+
+            <Style x:Key="PopUpFrame" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Padding" Value="16"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Dark={StaticResource AccentYellow}, Light={StaticResource AccentLiteGreen}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}"/>
+            </Style>
+            
+            <Style x:Key="TitlePopUp" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
             </Style>
 
             <Style x:Key="TitleStyle" TargetType="Label">

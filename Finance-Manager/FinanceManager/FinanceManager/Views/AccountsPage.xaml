@@ -95,12 +95,15 @@
                                            Style="{StaticResource TitleStyle}"/>
                                         <Button HorizontalOptions="EndAndExpand" Text="plus wallet" FontSize="20" Style="{StaticResource MainButtonChecked}" Clicked="Button_Clicked_1"  Padding="0" FontFamily="FAS"/>
                                     </StackLayout>
-                                    <Label  Text="{Binding Path=SmallStats.TotalBalance,StringFormat='{0:F2} RON'}"
-                                           Padding="0,0,0,0"
-                                       FontAttributes="Bold"
-                                       FontSize="38"
-                                       TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
-                                       Style="{StaticResource TitleStyle}"/>
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label  Text="{Binding Path=SmallStats.TotalBalance,StringFormat='{0:F2} RON'}"
+                                                Padding="0,0,0,0"
+                                                FontAttributes="Bold"
+                                                FontSize="38"
+                                                TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundLight}}"
+                                                Style="{StaticResource TitleStyle}"/>
+                                        <Button Text="info-circle" FontFamily="FAS" FontSize="25" Padding="0" CornerRadius="90" HeightRequest="5" WidthRequest="50" BackgroundColor="Transparent"  Command="{Binding OpenPopUpInfo}" HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
                                 </StackLayout>
                             </Frame>
                         </ContentView>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanceManager.Views.PopUps.SmallStatisticsPopUp"
+              xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <StackLayout VerticalOptions="Center" Padding="10" >
+        <Frame Style="{StaticResource PopUpFrame}" CornerRadius="20">
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding Path=TotalBalance, StringFormat='Total Balance: {0:F2} RON'}"    Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberExpences, StringFormat='Expences Count: {0:D}' }"     Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberIncoms, StringFormat='Incoms Count: {0:D}' }"         Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberCards, StringFormat='Total Bancar Accounts: {0:D}' }" Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberBanks, StringFormat='Unique Banks: {0:D}' }"          Style="{StaticResource TitlePopUp}"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+</rg:PopupPage>

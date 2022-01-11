@@ -5,6 +5,7 @@ using Microcharts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -27,6 +28,8 @@ namespace FinanceManager.ViewModels
 
         public AccountInfoExt AccountInfo { get; set; }
         public ICommand GetStatFromApi { get; set; }
+        public ICommand SelectedChartChange { get; set; }
+
         public StatsPerAccountPageViewModel(AccountInfoExt account)
         {
             AccountInfo = account;
@@ -41,6 +44,7 @@ namespace FinanceManager.ViewModels
                 TransactionsByCategory = new ObservableCollection<TransactionByDateBase>(categoryTransactions);
 
                 TransactionByDateBase = categoryTransactions[0];
+                OnPropertyChanged(nameof(Statistics));
             }).Wait();
 
             GetStatFromApi = new Command(async () =>
@@ -55,10 +59,14 @@ namespace FinanceManager.ViewModels
                 
                 OnPropertyChanged(nameof(TransactionsByCategory));
                 OnPropertyChanged(nameof(Statistics));
-                OnPropertyChanged(nameof(CategoryTransaction));
-                
+            });
 
-
+            SelectedChartChange = new Command(async () =>
+            {
+                List<TransactionByDateBase> transaction_date = TransactionsByCategory.Where(x => x.DateGoup == SelectedStatistic.StatsDate).ToList();
+                TransactionByDateBase = transaction_date[0];
+                OnPropertyChanged(nameof(SelectedStatistic));
+                OnPropertyChanged(nameof(TransactionByDateBase));
             });
 
             int i = 0;

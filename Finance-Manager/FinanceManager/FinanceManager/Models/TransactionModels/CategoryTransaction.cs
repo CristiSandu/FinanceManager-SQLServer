@@ -16,7 +16,7 @@ namespace FinanceManager.Models.TransactionModels
         [JsonProperty("transactionsList")]
         public List<TransactionInfoExt> TransactionsList { get; set; }
 
-
+        public string CategoryIcon => TransactionsList != null ? TransactionsList[0].CategoryIcon : string.Empty;
 
     }
 }

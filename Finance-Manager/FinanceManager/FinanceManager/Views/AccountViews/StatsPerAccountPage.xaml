@@ -22,7 +22,7 @@
                             ItemsSource="{Binding TransactionByDateBase.CategoryTransaction}">
 
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="11" VerticalItemSpacing="11"/>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="11"/>
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
@@ -43,7 +43,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Button Grid.Column="0" Grid.RowSpan="2" 
-                                            Text="undo" Padding="0" FontFamily="FAS" FontSize="25" 
+                                            Text="{Binding CategoryIcon}" Padding="0" FontFamily="FAS" FontSize="25" 
                                             TextColor="{StaticResource AccentLiteGreen}"
                                             HeightRequest="44" WidthRequest="44" 
                                             CornerRadius="90" BorderWidth="2" BorderColor="{StaticResource AccentLiteGreen}"
@@ -56,7 +56,7 @@
                                            Grid.Column="1"
                                            Margin="0,0,8,0"
                                            HorizontalOptions="StartAndExpand"
-                                           Text="{Binding Path=CategoryName,StringFormat='{0:F2} RON'}"
+                                           Text="{Binding Path=CategotyName}"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            FontAttributes="Bold"
                                            FontSize="24"
@@ -100,7 +100,6 @@
                         <ContentView>
                             <Frame BackgroundColor="{StaticResource AccentLitePurple}" HeightRequest="360"  Padding="8,8,8,0"  >
                                 <Grid RowSpacing="0" Padding="0,0,0,8">
-
                                     <Grid.RowDefinitions>
                                         <!--0-->
                                         <RowDefinition Height="auto" />
@@ -121,7 +120,6 @@
                                         <!--8-->
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
@@ -132,30 +130,29 @@
                                     </Grid.ColumnDefinitions>
 
                                     <CollectionView Grid.ColumnSpan="6"
-                                                    Grid.RowSpan="2"
-                                                    BackgroundColor="Red"
+                                                    HeightRequest="140"
+                                                    SelectionMode="Single"
+                                                    SelectionChangedCommand="{Binding SelectedChartChange}"
                                                     ItemsSource="{Binding Statistics}"
-                                                    SelectedItem="{Binding SelectedStatistic}"
-                                                    >
+                                                    SelectedItem="{Binding SelectedStatistic}">
                                         <CollectionView.ItemsLayout>
-                                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="2" VerticalItemSpacing="2"/>
+                                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="10"/>
                                         </CollectionView.ItemsLayout>
 
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
-                                                    <Grid Padding="0,0,0,0" RowSpacing="1">
+                                                <Frame BackgroundColor="Transparent" BorderColor="Transparent"  Padding="8">
+                                                    <Grid Padding="0,0,0,0" RowSpacing="-10" >
                                                         <Grid.RowDefinitions>
-                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="auto" />
                                                             <RowDefinition Height="*" />
                                                         </Grid.RowDefinitions>
 
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <Button Grid.Column="0" Grid.RowSpan="2" Text="BGraf1" TextColor="Transparent" BackgroundColor="White" Opacity=".2" />
-                                                        <microcharts:ChartView Grid.Column="0" HeightRequest="136" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding ChartGen}" />
-                                                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Month}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <microcharts:ChartView Grid.Column="0" HeightRequest="90" WidthRequest="45" HorizontalOptions="Center" VerticalOptions="Center" Chart="{Binding ChartGen}" />
+                                                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Month}" HorizontalOptions="Center" VerticalOptions="End" />
                                                     </Grid>
                                                 </Frame>
                                             </DataTemplate>
@@ -192,7 +189,6 @@
 
                                     <Label Grid.Column="0" Grid.Row="6" Text="Expences" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
                                     <Label Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="6" Text="{Binding Path=SelectedStatistic.ExpencesView,StringFormat='{0:F2} RON'}" FontSize="16" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-
                                 </Grid>
                             </Frame>
                         </ContentView>
