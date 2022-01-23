@@ -38,9 +38,25 @@ namespace FinanceManagerAPI.Controllers
         // GET: api/Stats/GetStatsForAPeriod
         //https://localhost:7025/api/Stats/GetStatsForAPeriod?type_id=6&account_id=2&endDate=2024-05-01&how_manny=6'
         [HttpGet("GetStatsForAPeriod")]
-        public async Task<ActionResult<List<Stat>>> GetStatsForAPeriod(int type_id, int account_id, DateTime endDate, int how_manny)
+        public async Task<ActionResult<List<Stat>>> GetStatsForAPeriod(int type_id, int account_id, int how_manny)
         {
-            return await _context.Stats.FromSqlRaw($"exec GetStatsForAPeriod {type_id}, {account_id}, '{endDate.ToString("yyyy-MM-dd")}', {how_manny}").ToListAsync();
+            List<Stat> stats = new();
+
+            List<DateTime> dates = Helper.HelperMethods.GetLastXMonths(how_manny);
+
+            foreach (var date in dates)
+            {
+                var output = await _context.Stats.FromSqlRaw($"exec GetStatsForASepcificDate {type_id}, {account_id}, '{date.ToString("yyyy-MM-dd")}'").ToListAsync();
+                if (output.Count == 1)
+                {
+                    stats.AddRange(output);
+                }else
+                {
+                    stats.Add(new Stat { StatsDate = date , Incomes= 0, Expences= 0, TypesId = type_id, AccountId = account_id, TimeStamp = date});
+                }
+            }
+
+            return stats;
         }
 
         // GET: api/Stats/5

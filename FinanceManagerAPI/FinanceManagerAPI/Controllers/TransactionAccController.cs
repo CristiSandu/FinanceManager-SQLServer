@@ -33,24 +33,17 @@ namespace FinanceManagerAPI.Controllers
 
         // GET: api/TransactionAcc/GetTransactionForAnAccount
         [HttpGet("GroupTransactionsByCategorys")]
-        public async Task<ActionResult<List<GroupDateTransactionCategoryModel>>> GroupTransactionsByCategorys(int? id_account = 1, char? statType = 'M')
+        public async Task<ActionResult<List<GroupDateTransactionCategoryModel>>> GroupTransactionsByCategorys(int? id_account = 1, char? statType = 'M', int size = 6 )
         {
             var list_of_categoris = await _context.Categories.ToListAsync();
 
             List<GroupDateTransactionCategoryModel> list_of_dates = new();
 
-            DateTime dateT = DateTime.Now;
-
-            List<DateTime> dates = new();
-            for (int i = 0; i < 6; i++)
-            {
-                dates.Add(dateT);
-                dateT = dateT.AddMonths(-1);
-            }
+            List<DateTime> dates = Helper.HelperMethods.GetLastXMonths(size);
 
             foreach (var date in dates)
             {
-                GroupDateTransactionCategoryModel current_date_transactions = new GroupDateTransactionCategoryModel { DateGoup = new DateTime(date.Year, date.Month, 1), CategoryTransaction = new() };
+                GroupDateTransactionCategoryModel current_date_transactions = new GroupDateTransactionCategoryModel { DateGoup = date, CategoryTransaction = new() };
 
                 foreach (var c in list_of_categoris)
                 {
