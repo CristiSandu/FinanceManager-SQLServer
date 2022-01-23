@@ -89,7 +89,7 @@ namespace FinanceManager.Views.AccountViews
         public Chart GrafData { get; set; }
         public StatsPerAccountPage()
         {
-            Task.Run(async () =>
+            Task.Run( () =>
             {
                 GrafData = Services.ChartGenerator.GerateIncomExpChart(2000, 1500);
             }).Wait();

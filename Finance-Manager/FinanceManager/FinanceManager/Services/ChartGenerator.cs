@@ -120,12 +120,12 @@ namespace FinanceManager.Services
             foreach (var incom in listOfIncom)
             {
                 color = (Color)Application.Current.Resources[ChartColors[i]];
-                entry = new Entry(incom.Price)
+                entry = new Entry(incom.TransactionPrice)
                 {
                     Color = SKColor.Parse(color.ToHex()),
                     ValueLabelColor = SKColor.Parse(color.ToHex()),
-                    Label = $"{incom.Name}",
-                    ValueLabel = $"{string.Format("{0:N2}", incom.Price)}Lei"
+                    Label = $"{incom.TransactionPrice}",
+                    ValueLabel = $"{string.Format("{0:N2}", incom.TransactionPrice)}Lei"
                 };
 
                 entrys.Add(entry);

@@ -37,6 +37,8 @@ namespace FinanceManager.ViewModels
         public AccountInfoExt AccountInfo { get; set; }
         public ICommand GoToStats { get; set; }
         public ICommand OpenPopup { get; set; }
+        public ICommand AddTransaction { get; set; }
+
 
 
         public Command<TransactionInfoExt> Delete { get; private set; }
@@ -63,6 +65,11 @@ namespace FinanceManager.ViewModels
             OpenPopup = new Command<TransactionInfoExt>(async (trans) =>
             {
                 await PopupNavigation.Instance.PushAsync(new Views.PopUps.TransactionPopUp { BindingContext = trans });
+            });
+
+            AddTransaction = new Command(async () =>
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.AddTransactionPage(AccountInfo));
             });
         }
 

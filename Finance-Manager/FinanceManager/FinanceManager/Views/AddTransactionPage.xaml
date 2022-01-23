@@ -22,14 +22,14 @@
                     <Frame Style="{StaticResource FrameAddNews}" >
                         <StackLayout Spacing="0">
                             <Label x:Name="DescriprionName" Text="Name" Style="{StaticResource TextColorLabel}"/>
-                            <Entry x:Name="TransactionName" Style="{StaticResource TextColorLabel}" Text="{Binding Name}"/>
+                            <Entry x:Name="TransactionName" Style="{StaticResource TextColorLabel}" Text="{Binding Transaction.TransactionName}"/>
                         </StackLayout>
                     </Frame>
 
                     <Frame Style="{StaticResource FrameAddNews}" >
                         <StackLayout Spacing="0">
                             <Label x:Name="DescriprionPrice" Text="Price" Style="{StaticResource TextColorLabel}" />
-                            <Entry x:Name="TransactionPrice" Text="{Binding Price}" Style="{StaticResource TextColorLabel}" Keyboard="Numeric"/>
+                            <Entry x:Name="TransactionPrice" Text="{Binding Transaction.TransactionPrice}" Style="{StaticResource TextColorLabel}" Keyboard="Numeric"/>
                         </StackLayout>
                     </Frame>
 
@@ -49,6 +49,7 @@
                                         ItemsSource="{Binding Accounts}"
                                         ItemDisplayBinding="{Binding AccountName}"
                                         SelectedItem="{Binding SelectedAccount}"
+                                        SelectedIndex="{Binding SelectedIndex}"
                                         Style="{StaticResource TextColorLabel}"/>
 
                             </StackLayout>
@@ -68,6 +69,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -75,15 +77,24 @@
                         <Frame Grid.Row="0" Grid.Column="0" Style="{StaticResource FrameAddNews}" >
                             <StackLayout Spacing="0">
                                 <Label x:Name="DescriptionDate" Text="Date" Style="{StaticResource TextColorLabel}" />
-                                <DatePicker x:Name="TransactionDate" TextColor="Gray" Date="{Binding Date}"/>
+                                <DatePicker x:Name="TransactionDate" TextColor="Gray" Date="{Binding Transaction.TransactionDate}"/>
                             </StackLayout>
                         </Frame>
                         <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource FrameAddNews}" >
                             <StackLayout Spacing="0">
                                 <Label x:Name="DescriptionType" Text="Type" Style="{StaticResource TextColorLabel}" />
                                 <Picker ItemsSource="{Binding Types}"
-                                        ItemDisplayBinding="{Binding .}"
-                                        SelectedItem="{Binding SelectedTypes}"
+                                        ItemDisplayBinding="{Binding TypesName}"
+                                        SelectedItem="{Binding SelectedType}"
+                                          Style="{StaticResource TextColorLabel}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="2" Style="{StaticResource FrameAddNews}" >
+                            <StackLayout Spacing="0">
+                                <Label x:Name="DescriptionMerchent" Text="Merchent" Style="{StaticResource TextColorLabel}" />
+                                <Picker ItemsSource="{Binding Merchents}"
+                                        ItemDisplayBinding="{Binding MerchantName}"
+                                        SelectedItem="{Binding SelectedMerchent}"
                                           Style="{StaticResource TextColorLabel}"/>
                             </StackLayout>
                         </Frame>
@@ -91,12 +102,12 @@
                     <Frame Style="{StaticResource FrameAddNews}" >
                         <StackLayout Spacing="0">
                             <Label x:Name="DescriptionDesc" Text="Description" Style="{StaticResource TextColorLabel}"/>
-                            <Editor x:Name="TransactionDescription" Style="{StaticResource TextColorLabel}" HeightRequest="100" Text="{Binding Description}"/>
+                            <Editor x:Name="TransactionDescription" Style="{StaticResource TextColorLabel}" HeightRequest="100" Text="{Binding Transaction.TransactionDescription}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
-                    <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource MainButtonUnChecked}" Clicked="SaveBtn_Clicked"/>
+                    <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource MainButtonUnChecked}"  Command="{Binding SaveCommand}"/>
                     <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource MainButtonChecked}" Clicked="CancelBtn_Clicked" />
                 </StackLayout>
             </StackLayout>

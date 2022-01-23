@@ -49,13 +49,8 @@ namespace FinanceManager.Services
 
         public async static Task<List<Transaction>> SearchByName(string name)
         {
-            var results = await ToDoItemsCollection
-                            .AsQueryable()
-                            .Where(tdi => tdi.Name.Contains(name))
-                            .Take(10)
-                            .ToListAsync();
-
-            return results;
+         
+            return new List<Transaction>();
         }
 
         public async static Task InsertItem(Transaction item)
@@ -65,7 +60,7 @@ namespace FinanceManager.Services
 
         public async static Task<bool> DeleteItem(Transaction item)
         {
-            var result = await ToDoItemsCollection.DeleteOneAsync(tdi => tdi.Id == item.Id);
+            var result = await ToDoItemsCollection.DeleteOneAsync(tdi => tdi.TransactionId == item.TransactionId);
 
             return result.IsAcknowledged && result.DeletedCount == 1;
         }
