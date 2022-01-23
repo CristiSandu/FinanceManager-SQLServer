@@ -19,7 +19,7 @@
                             Grid.RowSpan="4"
                             SelectionMode="Single"
                             ItemsSource="{Binding TransationList}"
-                            
+                            IsGrouped="True"
                             >
 
                     <CollectionView.ItemsLayout>
@@ -109,6 +109,25 @@
                             </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal"  VerticalOptions="Center">
+                                <Label Text="{Binding Name}"
+                                       TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold" 
+                                       Padding="8,0,0,0"/>
+
+                                <Label Text="{Binding Count, StringFormat='Count {0:D}'}" FontSize="Medium" 
+                                       FontAttributes="Bold" 
+                                       TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
+                                    Padding="8,0,0,0" VerticalOptions="Start" HorizontalOptions="EndAndExpand"/>
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
 
                     <CollectionView.Header>
                         <ContentView>
