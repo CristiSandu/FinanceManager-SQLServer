@@ -2,7 +2,9 @@
 <rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               x:Class="FinanceManager.Views.PopUps.TransactionPopUp"
-              xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+              xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+              
+              >
 
 
     <StackLayout VerticalOptions="Center" Padding="10" >
@@ -23,10 +25,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="0" Grid.RowSpan="3" 
-                        Text="utensils" Padding="0" FontFamily="FAS" FontSize="25" 
-                        TextColor="Green"
+                        Text="{Binding CategoryIcon}" Padding="0" FontFamily="FAS" FontSize="25" 
+                        TextColor="{Binding Color}"
                         HeightRequest="44" WidthRequest="44" 
-                        CornerRadius="90" BorderWidth="2" BorderColor="Green"
+                        CornerRadius="90" BorderWidth="2" BorderColor="{Binding Color}"
                         BackgroundColor="Transparent"
                         VerticalOptions="Center" 
                         Margin="8,0,8,0"
@@ -36,59 +38,59 @@
                         Grid.Column="1"
                         Margin="0,0,8,0"
                         HorizontalOptions="StartAndExpand"
-                        Text="Emag"
-                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        Text="{Binding TransactionName}"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
                         FontAttributes="Bold"
                         FontSize="24"
                         Style="{StaticResource TitleStyle}"/>
 
-                <Label Text="Emag"
+                <Label Text="{Binding MerchantName}"
                         Margin="0,0,8,0"
                         Grid.Row="1"
                         Grid.Column="1"
                         FontSize="12"
-                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                          TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
                         Style="{StaticResource TitleStyle}"/>
 
-                <Label Text="23.04.20201"
+                <Label Text="{Binding TransactionDate, StringFormat='{0:dd.MM.yyyy}'}"
                         Margin="0,0,8,0"
                         Grid.Row="2"
                         Grid.Column="1"
                         FontSize="12"
-                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                          TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
                         Style="{StaticResource TitleStyle}"/>
 
-                <Label Text="arrow-up" 
+                <Label Text="{Binding TypeIcon}" 
                         TextColor="{Binding ArrowColor}" 
                         FontFamily="FAS" Margin="0,0,16,0" 
                         Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" 
                         HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="28"/>
 
-                <Label Text="Description test heare  "
+                <Label Text="{Binding TransactionDescription}"
                         Margin="0,0,8,0"
                         Grid.Row="3"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
                         FontSize="12"
-                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                         TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
                         Style="{StaticResource TitleStyle}"/>
 
                 <BoxView Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
 
 
-                <Label Text="Food"
+                <Label Text="{Binding CategoryName}"
                         Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="3" 
                         HorizontalOptions="StartAndExpand"
                         Margin="8,0,8,0"
                         FontSize="12"
-                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
                         Style="{StaticResource TitleStyle}"/>
 
                 <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="5" 
                         Margin="0,0,8,0"
                         HorizontalOptions="EndAndExpand"
-                        Text="-50,56 RON"
-                        TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
+                        Text="{Binding ShowPrice,StringFormat='{0:F2} RON'}"
+                        TextColor="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundLight}}"
                         FontAttributes="Bold"
                         FontSize="18"
                         Style="{StaticResource TitleStyle}"/>

@@ -19,8 +19,8 @@
                             Grid.RowSpan="4"
                             SelectionMode="Single"
                             ItemsSource="{Binding TransationList}"
-                            IsGrouped="True"
-                            >
+                            SelectedItem="{Binding SelectedTransaction}"
+                            IsGrouped="True">
 
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="11" VerticalItemSpacing="11"/>

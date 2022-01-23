@@ -10,15 +10,34 @@ using Xamarin.Forms;
 using System.Windows.Input;
 using FinanceManager.Views.AccountViews;
 using System.Linq;
+using Rg.Plugins.Popup.Services;
 
 namespace FinanceManager.ViewModels
 {
     public class TransactionPageViewModel : BaseViewModel
     {
         public ObservableCollection<TransactionGroupModel> TransationList { get; set; }
-        public TransactionInfoExt SelectedTransaction { get; set; }
+        private TransactionInfoExt _selectedTransaction { get; set; }
+        public TransactionInfoExt SelectedTransaction {
+            get
+            {
+                return _selectedTransaction;
+            }
+            set 
+            { 
+                if (_selectedTransaction != value)
+                {
+                    _selectedTransaction = value;
+                    OpenPopup.Execute(_selectedTransaction);
+                }
+            } 
+        }
+
+
         public AccountInfoExt AccountInfo { get; set; }
         public ICommand GoToStats { get; set; }
+        public ICommand OpenPopup { get; set; }
+
 
         public Command<TransactionInfoExt> Delete { get; private set; }
 
@@ -39,6 +58,11 @@ namespace FinanceManager.ViewModels
                     AccountInfo.AccountBalance -= trans.ShowPrice ;
                     OnPropertyChanged(nameof(AccountInfo));
                 }
+            });
+
+            OpenPopup = new Command<TransactionInfoExt>(async (trans) =>
+            {
+                await PopupNavigation.Instance.PushAsync(new Views.PopUps.TransactionPopUp { BindingContext = trans });
             });
         }
 
