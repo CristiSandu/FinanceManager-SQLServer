@@ -22,6 +22,7 @@ namespace FinanceManager.ViewModels
         public ICommand AccountSelectedCommand { get; set; }
         
         public ICommand OpenPopUpInfo { get; set; }
+        public Command<AccountInfoExt> Delete { get; private set; }
 
 
         public AccountPageViewModel()
@@ -42,6 +43,17 @@ namespace FinanceManager.ViewModels
                     await Application.Current.MainPage.Navigation.PushAsync(new TransactionsPage(SelectedAccount));
                     SelectedAccount = null;
                     OnPropertyChanged(nameof(SelectedAccount));
+                }
+            });
+
+            Delete = new Command<AccountInfoExt>(async acc =>
+            {
+                if (await Services.APIConnection.DeleteCollectionElement<AccountInfoExt>("/api/Account/", acc.AccountId))
+                {
+                    AccountsList.Remove(acc);
+                    var small_stats = await Services.APIConnection.GetCollection<SmallStat>("/api/Stats/GetSmallStats");
+                    SmallStats = small_stats[0];
+                    OnPropertyChanged(nameof(SmallStats));
                 }
             });
 

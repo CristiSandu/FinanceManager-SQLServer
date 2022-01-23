@@ -10,9 +10,9 @@ namespace FinanceManager.Models.StatsModels
         [JsonProperty(PropertyName = "totalBalance")]
         public decimal TotalBalance { get; set; }
         [JsonProperty(PropertyName = "numberExpences")]
-        public int NumberExpences { get; set; }
+        public int? NumberExpences { get; set; }
         [JsonProperty(PropertyName = "numberIncoms")]
-        public int NumberIncoms { get; set; }
+        public int? NumberIncoms { get; set; }
         [JsonProperty(PropertyName = "numberCards")]
         public int NumberCards { get; set; }
         [JsonProperty(PropertyName = "numberBanks")]

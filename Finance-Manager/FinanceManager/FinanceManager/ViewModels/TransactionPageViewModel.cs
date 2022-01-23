@@ -18,6 +18,9 @@ namespace FinanceManager.ViewModels
         public TransactionInfoExt SelectedTransaction { get; set; }
         public AccountInfoExt AccountInfo { get; set; }
         public ICommand GoToStats { get; set; }
+
+        public Command<TransactionInfoExt> Delete { get; private set; }
+
         public TransactionPageViewModel(AccountInfoExt accountInfoExt)
         {
             Task.Run(async () =>
@@ -30,6 +33,16 @@ namespace FinanceManager.ViewModels
             GoToStats = new Command(async () =>
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new StatsPerAccountPage(AccountInfo));
+            });
+
+            Delete = new Command<TransactionInfoExt>(async trans =>
+            {
+                if (await Services.APIConnection.DeleteCollectionElement<TransactionInfoExt>("/api/TransactionAcc/", trans.TransactionId))
+                {
+                    TransationList.Remove(trans);
+                    AccountInfo.AccountBalance -= trans.ShowPrice ;
+                    OnPropertyChanged(nameof(AccountInfo));
+                }
             });
         }
     }

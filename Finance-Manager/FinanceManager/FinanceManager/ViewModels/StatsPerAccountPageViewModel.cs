@@ -36,11 +36,11 @@ namespace FinanceManager.ViewModels
 
             Task.Run(async() =>
             {
-                var listOfStats = await Services.APIConnection.GetCollection<StatisticsModel>($"/api/Stats/GetStatsForAPeriod?type_id={SelectedType.TypesId}&account_id={account.AccountId}&endDate={DateTime.Now.ToString("yyyy-MM-dd")}&how_manny={6}");
+                var listOfStats = await Services.APIConnection.GetCollection<StatisticsModel>($"/api/Stats/GetStatsForAPeriod?type_id={SelectedType.TypesId}&account_id={account.AccountId}&how_manny={6}");
 
                 SelectedStatistic = listOfStats[0];
                 Statistics = new ObservableCollection<StatisticsModel>(listOfStats);
-                var categoryTransactions = await Services.APIConnection.GetCollection<TransactionByDateBase>($"/api/TransactionAcc/GroupTransactionsByCategorys?id_account={account.AccountId}&statType={'M'}");
+                var categoryTransactions = await Services.APIConnection.GetCollection<TransactionByDateBase>($"/api/TransactionAcc/GroupTransactionsByCategorys?id_account={account.AccountId}&statType={'M'}&size={6}");
                 TransactionsByCategory = new ObservableCollection<TransactionByDateBase>(categoryTransactions);
 
                 TransactionByDateBase = categoryTransactions[0];
@@ -49,11 +49,10 @@ namespace FinanceManager.ViewModels
 
             GetStatFromApi = new Command(async () =>
             {
-                var listOfStats = await Services.APIConnection.GetCollection<StatisticsModel>($"/api/Stats/GetStatsForAPeriod?type_id={SelectedType.TypesId}&account_id={account.AccountId}&endDate={DateTime.Now.ToString("yyyy-MM-dd")}&how_manny={6}");
-
-
+                var listOfStats = await Services.APIConnection.GetCollection<StatisticsModel>($"/api/Stats/GetStatsForAPeriod?type_id={SelectedType.TypesId}&account_id={account.AccountId}&how_manny={6}");
                 Statistics = new ObservableCollection<StatisticsModel>(listOfStats);
-                var categoryTransactions = await Services.APIConnection.GetCollection<TransactionByDateBase>($"/api/TransactionAcc/GroupTransactionsByCategorys?id_account={account.AccountId}&statType={'M'}");
+                
+                var categoryTransactions = await Services.APIConnection.GetCollection<TransactionByDateBase>($"/api/TransactionAcc/GroupTransactionsByCategorys?id_account={account.AccountId}&statType={'M'}&size={6}");
                 TransactionsByCategory = new ObservableCollection<TransactionByDateBase>(categoryTransactions);
                 TransactionByDateBase = categoryTransactions[0];
                 
@@ -63,8 +62,9 @@ namespace FinanceManager.ViewModels
 
             SelectedChartChange = new Command(async () =>
             {
-                List<TransactionByDateBase> transaction_date = TransactionsByCategory.Where(x => x.DateGoup == SelectedStatistic.StatsDate).ToList();
-                TransactionByDateBase = transaction_date[0];
+                List<TransactionByDateBase> transaction_date = TransactionsByCategory.Where(x => x.DateGoup.Year == SelectedStatistic.StatsDate.Year && x.DateGoup.Month == SelectedStatistic.StatsDate.Month).ToList();
+                if (transaction_date.Count >= 1 )
+                    TransactionByDateBase = transaction_date[0];
                 OnPropertyChanged(nameof(SelectedStatistic));
                 OnPropertyChanged(nameof(TransactionByDateBase));
             });

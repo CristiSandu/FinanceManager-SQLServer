@@ -15,7 +15,7 @@
             </Grid.ColumnDefinitions>
             <BoxView BackgroundColor="{StaticResource AccentLitePurple}"/>
             <StackLayout  Grid.RowSpan="4" Padding="16,0,16,0" Spacing="0" >
-                <CollectionView x:Name="accountsList"
+                <CollectionView x:Name="transactionList"
                             Grid.RowSpan="4"
                             SelectionMode="Single"
                             ItemsSource="{Binding TransationList}"
@@ -28,22 +28,30 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
-                                <Grid Padding="0,0,0,0" RowSpacing="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems >
+                                        <SwipeItemView Command="{Binding Path=BindingContext.Delete, Source={Reference transactionList}}" CommandParameter="{Binding .}" >
+                                            <Button Text="trash" CornerRadius="5" FontSize="25" FontFamily="FAS" BackgroundColor="Red"/>
+                                        </SwipeItemView>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
+                                    <Grid Padding="0,0,0,0" RowSpacing="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width=".4*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".4*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" Grid.RowSpan="2" 
+                                        <Button Grid.Column="0" Grid.RowSpan="2" 
                                             Text="{Binding CategoryIcon}" Padding="0" FontFamily="FAS" FontSize="25" 
                                             TextColor="{Binding ColorCategory}"
                                             HeightRequest="44" WidthRequest="44" 
@@ -53,7 +61,7 @@
                                             Margin="8,0,8,0"
                                             HorizontalOptions="Center" />
 
-                                    <Label Grid.Row="0"
+                                        <Label Grid.Row="0"
                                            Grid.Column="1"
                                            Margin="0,0,8,0"
                                            HorizontalOptions="StartAndExpand"
@@ -63,7 +71,7 @@
                                            FontSize="24"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Text="{Binding TransactionDate, StringFormat='{0:dd.MM.yyyy}'}"
+                                        <Label Text="{Binding TransactionDate, StringFormat='{0:dd.MM.yyyy}'}"
                                            Margin="0,0,8,0"
                                            Grid.Row="1"
                                            Grid.Column="1"
@@ -71,10 +79,10 @@
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <BoxView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
+                                        <BoxView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
 
 
-                                    <Label Text="{Binding CategoryName}"
+                                        <Label Text="{Binding CategoryName}"
                                            Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="3" 
                                            HorizontalOptions="StartAndExpand"
                                            Margin="8,0,8,0"
@@ -82,7 +90,7 @@
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="3" 
+                                        <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="3" 
                                            Margin="0,0,8,0"
                                            HorizontalOptions="EndAndExpand"
                                            Text="{Binding Path=ShowPrice,StringFormat='{0:F2} RON'}"
@@ -91,13 +99,14 @@
                                            FontSize="18"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Text="{Binding TypeIcon}" 
+                                        <Label Text="{Binding TypeIcon}" 
                                            TextColor="{Binding ArrowColor}" 
                                            FontFamily="FAS" Margin="0,0,16,0" 
                                            Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" 
                                            HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="28"/>
-                                </Grid>
-                            </Frame>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
 
