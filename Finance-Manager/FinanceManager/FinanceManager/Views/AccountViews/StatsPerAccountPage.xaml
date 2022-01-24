@@ -4,6 +4,11 @@
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              Title="Cash Flux"
              x:Class="FinanceManager.Views.AccountViews.StatsPerAccountPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Month" Order="Secondary" Command="{Binding ChangePerMonthViewComm}"/>
+        <ToolbarItem Text="Year" Order="Secondary" Command="{Binding ChangePerYearViewComm}"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <Grid >
             <Grid.RowDefinitions>
@@ -22,12 +27,12 @@
                             ItemsSource="{Binding TransactionByDateBase.CategoryTransaction}">
 
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="11"/>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="0"/>
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Style="{StaticResource TransactionListStyle}" CornerRadius="10" HeightRequest="92" Padding="0,5,0,5">
+                            <Frame Style="{StaticResource TransactionListStyle}" BorderColor="{StaticResource AccentLiteGreen}" CornerRadius="0" HeightRequest="92" Padding="0,5,0,5">
                                 <Grid Padding="0,0,0,0" RowSpacing="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -62,35 +67,13 @@
                                            FontSize="24"
                                            Style="{StaticResource TitleStyle}"/>
 
-                                    <Label Text="{Binding TotalSum}"
+                                    <Label Text="{Binding TotalSum,StringFormat='{0:F2} RON'}"
                                            Margin="0,0,8,0"
                                            Grid.Row="1"
                                            Grid.Column="1"
                                            FontSize="12"
                                            TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
                                            Style="{StaticResource TitleStyle}"/>
-
-                                    <BoxView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" BackgroundColor="{StaticResource AccentLiteGreen}" HeightRequest="2" Opacity=".7"/>
-
-
-                                    <Label Text="{Binding AccountName}"
-                                           Grid.Column="0" Grid.RowSpan="2" Grid.Row="3" 
-                                           HorizontalOptions="CenterAndExpand"
-                                           Margin="8,0,8,0"
-                                           FontSize="12"
-                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
-                                           Style="{StaticResource TitleStyle}"/>
-
-                                    <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="3" 
-                                           Margin="0,0,8,0"
-                                           HorizontalOptions="EndAndExpand"
-                                           Text="{Binding Path=AccountBalance,StringFormat='{0:F2} RON'}"
-                                           TextColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
-                                           FontAttributes="Bold"
-                                           FontSize="18"
-                                           Style="{StaticResource TitleStyle}"/>
-
-                                    <Image Source="arrow_up.png" Margin="0,0,8,0" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="32" WidthRequest="32"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -136,7 +119,7 @@
                                                     ItemsSource="{Binding Statistics}"
                                                     SelectedItem="{Binding SelectedStatistic}">
                                         <CollectionView.ItemsLayout>
-                                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="10"/>
+                                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="{Binding VerticalSpacingValue}" VerticalItemSpacing="10"/>
                                         </CollectionView.ItemsLayout>
 
                                         <CollectionView.ItemTemplate>

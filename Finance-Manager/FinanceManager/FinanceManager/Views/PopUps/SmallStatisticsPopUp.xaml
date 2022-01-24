@@ -8,10 +8,10 @@
         <Frame Style="{StaticResource PopUpFrame}" CornerRadius="20">
             <StackLayout>
                 <StackLayout>
-                    <Label Text="{Binding Path=TotalBalance, StringFormat='Total Balance: {0:F2} RON'}"    Style="{StaticResource TitlePopUp}"/>
-                    <Label Text="{Binding Path=NumberExpences, StringFormat='Expences Count: {0:D}' }"     Style="{StaticResource TitlePopUp}"/>
-                    <Label Text="{Binding Path=NumberIncoms, StringFormat='Incoms Count: {0:D}' }"         Style="{StaticResource TitlePopUp}"/>
-                    <Label Text="{Binding Path=NumberCards, StringFormat='Total Bancar Accounts: {0:D}' }" Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=TotalBalance, StringFormat='Total: {0:F2} RON'}"    Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberExpences, StringFormat='Expences: {0:D}' }"     Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberIncoms, StringFormat='Incoms: {0:D}' }"         Style="{StaticResource TitlePopUp}"/>
+                    <Label Text="{Binding Path=NumberCards, StringFormat='Bancar Accounts: {0:D}' }" Style="{StaticResource TitlePopUp}"/>
                     <Label Text="{Binding Path=NumberBanks, StringFormat='Unique Banks: {0:D}' }"          Style="{StaticResource TitlePopUp}"/>
                 </StackLayout>
             </StackLayout>

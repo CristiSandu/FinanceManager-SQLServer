@@ -168,24 +168,8 @@ namespace FinanceManager.ViewModels
         {
             Task.Run(async () =>
             {
-                //GrafData = await Services.ChartGenerator.GetOverView(CurrentShowDate);
-                //IncomeSum = await Services.DatabaseConnection.GetFunctionResult($"SELECT SUM(Price) FROM \"Transaction\" WHERE Type = \"Income\" ");
-                //ExpencesSum = await Services.DatabaseConnection.GetFunctionResult($"SELECT SUM(Price) FROM \"Transaction\" WHERE Type = \"Expense\" ");
-                //Balance = IncomeSum - ExpencesSum;
-                //if (Balance < 0)
-                //{
-                //    BalanceColor = Color.Red;
-                //}
-                //else
-                //{
-                //    BalanceColor = Color.Green;
-                //}
-
-                await Services.DatabaseConnection.AddAccount();
-
                 TotalMessage = "Balance: ";
             }).Wait();
-
 
             NextMonth = new Command(async =>
             {

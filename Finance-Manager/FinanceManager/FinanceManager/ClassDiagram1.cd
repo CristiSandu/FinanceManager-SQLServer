@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinanceManager.Convertors.TransactionTypeConvertor" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="27.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Convertors\TransactionTypeConvertor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinanceManager.Helpers.Settings">
+    <Position X="7.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAARAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.Account">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AxAAAASAAAAAAACAAgAAAIAAAAAAAAAQACQAACAAAAA=</HashCode>
+      <FileName>Models\AccountModels\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.StatisticsModel">
+    <Position X="4" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgABAACAAgAAAAAAAgAAEAAAAAAAQAEEAQAAAGAAAEA=</HashCode>
+      <FileName>Models\StatsModels\StatisticsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.Transaction">
+    <Position X="9.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAAAACAAAAAAgAAAiAAAAAAAIAAgBIAAAAAECAAiEA=</HashCode>
+      <FileName>Models\TransactionModels\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.Bank">
+    <Position X="2.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAIAAAABCAADAAAAAAAAA=</HashCode>
+      <FileName>Models\Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.Categorie">
+    <Position X="4" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgCAAAAAAAAAACAAgAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Categorie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.CategoryModel">
+    <Position X="5.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\CategoryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.MerchantModel">
+    <Position X="5.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAACAAAAAAgCAAAAAAAAAAAIAAAAAAAAIAAAACAA=</HashCode>
+      <FileName>Models\MerchantModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.TransactionsByModel">
+    <Position X="7.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAAAAAAAAAAAAAAgAABAAAAAAAACEA=</HashCode>
+      <FileName>Models\TransactionsByModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.Type">
+    <Position X="2.75" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAACAAAAAAAAAAAAAAACAAgAAASAAAAA=</HashCode>
+      <FileName>Models\Type.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.AccountModels.AccountInfoExt">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAASAAAAAAAAAAgAAAIAAAAAAAAAQADQAACEAAAA=</HashCode>
+      <FileName>Models\AccountModels\AccountInfoExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.StatsModels.SmallStat">
+    <Position X="0.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAgAAAAAABIAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\StatsModels\SmallStat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.TransactionModels.CategoryTransaction">
+    <Position X="7.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAIAAAAAAAAAAABgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TransactionModels\CategoryTransaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.TransactionModels.TransactionByDateBase">
+    <Position X="0.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAACAQA=</HashCode>
+      <FileName>Models\TransactionModels\TransactionByDateBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.TransactionModels.TransactionGroupModel">
+    <Position X="2.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TransactionModels\TransactionGroupModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Models.TransactionModels.TransactionInfoExt">
+    <Position X="4" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAgAAAAACAAAAQAAKoAABIAAAAEkAAAgEA=</HashCode>
+      <FileName>Models\TransactionModels\TransactionInfoExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Services.APIConnection">
+    <Position X="10.5" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAIAAAAAAQAAAAAIAAAAIEAAAAA=</HashCode>
+      <FileName>Services\APIConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Services.ChartGenerator">
+    <Position X="9.25" Y="12" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAIAAAAAAAAIAAAAAAAAAAAAAgAAAAEACAA=</HashCode>
+      <FileName>Services\ChartGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.ViewModels.AccountPageViewModel">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAACABAAQAAAAACAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AccountPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.ViewModels.AddAccountPageViewModel">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAEQAAACABAAAAAAAAAgCAAAQhACAAAQAEAEAQAA=</HashCode>
+      <FileName>ViewModels\AddAccountPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.ViewModels.AddTransactionPageViewModel">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCEAAQAAAAACAAAAAAAAAAAAAQAgACAAIAAgAAECAA=</HashCode>
+      <FileName>ViewModels\AddTransactionPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.ViewModels.BaseViewModel">
+    <Position X="6" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FinanceManager.ViewModels.StatsPageViewModel">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kCEAAAAAcAAAACAAkEhAAADAQQAAIIAAAAAAIAAACAA=</HashCode>
+      <FileName>ViewModels\StatsPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.ViewModels.StatsPerAccountPageViewModel">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgAAACQAAQEggAEEAAIARAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\StatsPerAccountPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.ViewModels.TransactionPageViewModel">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABAAEAAAEAgAAAAAQAQACAEAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ViewModels\TransactionPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.AccountViews.StatsPerAccountPage">
+    <Position X="7.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AccountViews\StatsPerAccountPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.AccountViews.TransactionsPage">
+    <Position X="9.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AccountViews\TransactionsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.PopUps.SmallStatisticsPopUp">
+    <Position X="2.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PopUps\SmallStatisticsPopUp.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.PopUps.TransactionPopUp">
+    <Position X="5.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PopUps\TransactionPopUp.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.AccountsPage">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AccountsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.AddAccountPage">
+    <Position X="5.75" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddAccountPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.AddTransactionPage">
+    <Position X="8" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddTransactionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.ExpencesPage">
+    <Position X="0.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAgAAAAAgAAAAAAAAABAQAAAAAAAQDAAAAA=</HashCode>
+      <FileName>Views\ExpencesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.MainTabbedPage">
+    <Position X="4" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainTabbedPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.SettingsPage">
+    <Position X="9.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAIAA=</HashCode>
+      <FileName>Views\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.StatsPage">
+    <Position X="5.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Views\StatsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.Views.WelcomePage">
+    <Position X="4.5" Y="27.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\WelcomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.App">
+    <Position X="0.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAgAEAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManager.MainPage">
+    <Position X="2.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
