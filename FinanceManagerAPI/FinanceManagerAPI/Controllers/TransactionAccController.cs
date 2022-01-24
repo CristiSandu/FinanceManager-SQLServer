@@ -39,7 +39,13 @@ namespace FinanceManagerAPI.Controllers
 
             List<GroupDateTransactionCategoryModel> list_of_dates = new();
 
-            List<DateTime> dates = Helper.HelperMethods.GetLastXMonths(size);
+            List<DateTime> dates = new List<DateTime>();
+            if (size == 6)
+                dates = Helper.HelperMethods.GetLastXMonths(size);
+            else if (size == 3)
+                dates = Helper.HelperMethods.GetLastXYears(size);
+            else
+                dates = Helper.HelperMethods.GetLastXMonths(size);
 
             foreach (var date in dates)
             {

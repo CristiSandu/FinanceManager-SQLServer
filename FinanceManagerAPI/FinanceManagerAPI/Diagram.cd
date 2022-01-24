@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinanceManagerAPI.Controllers.AccountController">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAIAAAAAAAAAAAAAQBAAIBUAAAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Controllers.BankController">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAgBAAAAAQBAAAAAAAAAAIAAAAAAAAAAQA=</HashCode>
+      <FileName>Controllers\BankController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Controllers.CategorieController">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIABAEAAAAAAAAAAQAAgAAAAAAAAAgAEAA=</HashCode>
+      <FileName>Controllers\CategorieController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Controllers.MerchantController">
+    <Position X="4" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABACBAAAAAAAAAAAAAAAAAAAAAAAQCAAAAI=</HashCode>
+      <FileName>Controllers\MerchantController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Controllers.StatsController">
+    <Position X="0.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAgAAAAgBAAEAAAAgAAABAAAAAAAAAAAAAABgAA=</HashCode>
+      <FileName>Controllers\StatsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Controllers.TransactionAccController">
+    <Position X="4" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAABAAQAgAAAACAAAAAAAABAABAAAAAgAA=</HashCode>
+      <FileName>Controllers\TransactionAccController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Controllers.TypeController">
+    <Position X="0.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAABAAAIAAAAAEAAAAAAAEAAIQAAAAAAAE=</HashCode>
+      <FileName>Controllers\TypeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.Account">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AxAAAASAAAAAAACAAgAAAIAAAAAAAAAQACQAACAAAAA=</HashCode>
+      <FileName>Database\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.AccountInfoExt">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAASAAAAAAAAAAgAAAIAAAAAAAAAQADQAACEAAAA=</HashCode>
+      <FileName>Database\AccountInfoExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.ApplicationDbContext">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAAAIQBQAACAAAQAAAAAEAACkACAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\ApplicationDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.Bank">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAIAAAABCAADAAAAAAAAA=</HashCode>
+      <FileName>Database\Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.Category">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgCAAAAAAAAAACAAgAAAAAAAgAEAAAA=</HashCode>
+      <FileName>Database\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.Merchant">
+    <Position X="2.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAACAAAAAAgCAAAAAAAAAAAIAAAAAAAAIAAAACAA=</HashCode>
+      <FileName>Database\Merchant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.SmallStat">
+    <Position X="5.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAgAAAAAABIAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\SmallStat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.Stat">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAACAAgAAAAAAAgAAAAAAAAAAQAEAAQAAACAAAEA=</HashCode>
+      <FileName>Database\Stat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.TransactionAcc">
+    <Position X="2.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAAAACAAAAAAgAAAiAAAAAAAIAAgBIAAAAAECAAiEA=</HashCode>
+      <FileName>Database\TransactionAcc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.TransactionInfoExt">
+    <Position X="5.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAACAAAAAAAKoAABIAAAAAkAAAgEA=</HashCode>
+      <FileName>Database\TransactionInfoExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Database.Type">
+    <Position X="7.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAACAAAAAAAAAAAAAAACAAgAAASEAAAA=</HashCode>
+      <FileName>Database\Type.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Helper.HelperMethods">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAA=</HashCode>
+      <FileName>Helper\Helper-methods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Models.GroupByCategotyModel">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GroupByCategotyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinanceManagerAPI.Models.GroupDateTransactionCategoryModel">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQA=</HashCode>
+      <FileName>Models\GroupDateTransactionCategoryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

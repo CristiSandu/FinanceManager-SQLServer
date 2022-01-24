@@ -42,7 +42,13 @@ namespace FinanceManagerAPI.Controllers
         {
             List<Stat> stats = new();
 
-            List<DateTime> dates = Helper.HelperMethods.GetLastXMonths(how_manny);
+            List<DateTime> dates = new List<DateTime> ();
+            if (how_manny == 6)
+                dates = Helper.HelperMethods.GetLastXMonths(how_manny);
+            else if (how_manny == 3)
+                dates = Helper.HelperMethods.GetLastXYears(how_manny);
+            else
+                dates = Helper.HelperMethods.GetLastXMonths(how_manny);
 
             foreach (var date in dates)
             {
