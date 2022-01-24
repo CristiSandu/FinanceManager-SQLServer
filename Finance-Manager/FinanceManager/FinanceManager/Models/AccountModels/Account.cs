@@ -10,39 +10,40 @@ namespace FinanceManager.Models
 {
     public class Account
     {
-        [JsonProperty(PropertyName = "accountId")]
+        [JsonProperty("accountId")]
         public int AccountId { get; set; }
-        [JsonProperty(PropertyName = "accountName")]
-        public string AccountName { get; set; }
-        [JsonProperty(PropertyName = "typesId ")]
 
+        [JsonProperty("accountName")]
+        public string AccountName { get; set; }
+
+        [JsonProperty("typesId")]
         public int TypesId { get; set; }
 
-        [JsonProperty(PropertyName = "bankId")]
+        [JsonProperty("bankId")]
         public int BankId { get; set; }
 
-        [JsonProperty(PropertyName = "accountBalance")]
+        [JsonProperty("accountBalance")]
         public float AccountBalance { get; set; }
 
-        [JsonProperty(PropertyName = "accountIban")]
+        [JsonProperty("accountIban")]
         public string AccountIban { get; set; }
 
-        [JsonProperty(PropertyName = "timeStamp")]
+        [JsonProperty("timeStamp")]
         public DateTime TimeStamp { get; set; }
 
-        [JsonProperty(PropertyName = "accountHolder")]
+        [JsonProperty("accountHolder")]
         public string AccountHolder { get; set; }
 
-        [JsonProperty(PropertyName = "bank")]
+        [JsonProperty("bank")]
         public Bank Bank { get; set; }
 
-        [JsonProperty(PropertyName = "types")]
+        [JsonProperty("types")]
         public Models.Type Types { get; set; }
 
-        [JsonProperty(PropertyName = "stats")]
-        public List<object> Stats { get; set; }
+        [JsonProperty("stats")]
+        public List<StatisticsModel> Stats { get; set; }
 
-        [JsonProperty(PropertyName = "transactionAccs")]
-        public List<object> TransactionAccs { get; set; }
+        [JsonProperty("transactionAccs")]
+        public List<Transaction> TransactionAccs { get; set; }
     }
 }

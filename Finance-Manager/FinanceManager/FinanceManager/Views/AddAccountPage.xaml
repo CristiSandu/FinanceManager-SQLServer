@@ -6,7 +6,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Command="{Binding ShowAddAccount}" />
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <Grid  VerticalOptions="Center" Padding="16,4,16,0" RowSpacing="8">
 
@@ -60,7 +60,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
-              
+
             </CollectionView>
 
             <Grid Grid.Row="1" IsVisible="{Binding IsShowAddAccount}">
@@ -92,11 +92,13 @@
                     <Picker ItemsSource="{Binding BanksList}"
                             Title="Select a Bank"
                             ItemDisplayBinding="{Binding BankName}"
+                            SelectedIndex="{Binding SelectedIndexBank}"
                             SelectedItem="{Binding SelectedBank}"/>
                 </Frame>
                 <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource FrameAddNews}">
                     <Picker ItemsSource="{Binding TypesList}"
                             Title="Select a Type"
+                            SelectedIndex="{Binding SelectedIndexType}"
                             ItemDisplayBinding="{Binding TypesName}"
                             SelectedItem="{Binding SelectedType}"/>
                 </Frame>
@@ -138,7 +140,6 @@
                     <Button Text="Delete" Style="{StaticResource MainButtonUnChecked}" Command="{Binding DeleteAccoutCommand}"/>
                 </StackLayout>
             </Grid>
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>

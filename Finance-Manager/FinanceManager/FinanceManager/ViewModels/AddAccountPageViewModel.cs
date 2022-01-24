@@ -12,7 +12,7 @@ namespace FinanceManager.ViewModels
 {
     public class AddAccountPageViewModel : BaseViewModel
     {
-        public Account AccountData { get; set; } = new Account { AccountBalance = 0, TimeStamp = DateTime.Now, Stats = new List<object>(), TransactionAccs = new List<object>() };
+        public Account AccountData { get; set; } = new Account { AccountBalance = 0, TimeStamp = DateTime.Now, Stats = new List<StatisticsModel>(), TransactionAccs = new List<Transaction>() };
         public Account SelectedAccount { get; set; }
 
         public bool IsShowAddAccount { get; set; }
@@ -25,8 +25,14 @@ namespace FinanceManager.ViewModels
         public Bank SelectedBank { get; set; }
         public Models.Type SelectedType { get; set; }
 
+        public int SelectedIndexBank { get;set; }
+        public int SelectedIndexType{ get; set; }
+
+
         public ICommand AddNewAccount { get; set; }
         public ICommand ShowAddAccount { get; set; }
+        public ICommand ShowForm{ get; set; }
+
         public ICommand UpdateCommand { get; set; }
         public ICommand DeleteAccoutCommand { get; set; }
 
@@ -36,8 +42,8 @@ namespace FinanceManager.ViewModels
             {
                 accountList = await Services.APIConnection.GetCollection<Account>("/api/Account");
                 BanksList = await Services.APIConnection.GetCollection<Bank>("/api/Bank");
-                TypesList = await Services.APIConnection.GetCollection<Models.Type>("/api/Type");
-
+                TypesList = await Services.APIConnection.GetCollection<Models.Type>("/api/Type/TableName?tableName=Account");
+           
                 Accounts = new ObservableCollection<Account>(accountList);
             }).Wait();
 
@@ -79,14 +85,22 @@ namespace FinanceManager.ViewModels
                 }
 
 
-                AccountData = new Account { AccountBalance = 0, TimeStamp = DateTime.Now, Stats = new List<object>(), TransactionAccs = new List<object>() };
+                AccountData = new Account { AccountBalance = 0, TimeStamp = DateTime.Now, Stats = new List<StatisticsModel>(), TransactionAccs = new List<Transaction>() };
                 OnPropertyChanged(nameof(AccountData));
             });
+
             UpdateCommand = new Command(() =>
             {
+                ShowForm.Execute(true);
+                SelectedIndexBank = SelectedAccount.BankId - 1;
+                SelectedIndexType = SelectedAccount.TypesId - 3;
                 AccountData = SelectedAccount;
+                OnPropertyChanged(nameof(SelectedIndexBank));
+                OnPropertyChanged(nameof(SelectedIndexType));
                 OnPropertyChanged(nameof(AccountData));
+
             });
+
             DeleteAccoutCommand = new Command(async () =>
             {
                 if (await Services.APIConnection.DeleteCollectionElement<Account>("/api/Account", AccountData.AccountId))
@@ -96,12 +110,22 @@ namespace FinanceManager.ViewModels
                     OnPropertyChanged(nameof(AccountData));
                 }
             });
+
             ShowAddAccount = new Command(() =>
             {
-                IsShowAddAccount = !IsShowAddAccount;
-                AccountData = new Account { AccountBalance = 0, TimeStamp = DateTime.Now, Stats = new List<object>(), TransactionAccs = new List<object>() };
-                OnPropertyChanged(nameof(IsShowAddAccount));
+                ShowForm.Execute(true);
+                SelectedIndexBank = -1;
+                SelectedIndexType = -3;
+                AccountData = new Account { AccountBalance = 0, TimeStamp = DateTime.Now, Stats = new List<StatisticsModel>(), TransactionAccs = new List<Transaction>() };
+                OnPropertyChanged(nameof(SelectedIndexBank));
+                OnPropertyChanged(nameof(SelectedIndexType));
                 OnPropertyChanged(nameof(AccountData));
+            });
+
+            ShowForm = new Command<bool>((val) =>
+            {
+                IsShowAddAccount = val;
+                OnPropertyChanged(nameof(IsShowAddAccount));
             });
         }
     }
