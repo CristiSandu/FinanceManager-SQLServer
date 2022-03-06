@@ -13,7 +13,7 @@ namespace FinanceManager.Models.TransactionModels
         public List<CategoryTransaction> CategoryTransaction { get; set; }
 
         public string CategoryName => CategoryTransaction.Count > 0 ? CategoryTransaction[0].CategotyName : string.Empty;
-        public string TotalSum => CategoryTransaction.Count > 0 ? CategoryTransaction[0].TotalSum.ToString() : string.Empty;
+        public int  TotalSum => CategoryTransaction.Count > 0 ? CategoryTransaction[0].TotalSum : 0;
 
     }
 }
